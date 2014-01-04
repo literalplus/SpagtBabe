@@ -1,0 +1,29 @@
+From cb731d5912bc3a4bb68d30015cf22e6a5c907ca1 Mon Sep 17 00:00:00 2001
+From: xxyy <xxyy98@gmail.com>
+Date: Sat, 4 Jan 2014 22:20:13 +0100
+Subject: [PATCH] Enable commands cleverbot,suggest,wordoftheday
+
+---
+ {disabled_stuff => plugins}/cleverbot.py    | 0
+ {disabled_stuff => plugins}/suggest.py      | 0
+ {disabled_stuff => plugins}/wordoftheday.py | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ rename {disabled_stuff => plugins}/cleverbot.py (100%)
+ rename {disabled_stuff => plugins}/suggest.py (100%)
+ rename {disabled_stuff => plugins}/wordoftheday.py (100%)
+
+diff --git a/disabled_stuff/cleverbot.py b/plugins/cleverbot.py
+similarity index 100%
+rename from disabled_stuff/cleverbot.py
+rename to plugins/cleverbot.py
+diff --git a/disabled_stuff/suggest.py b/plugins/suggest.py
+similarity index 100%
+rename from disabled_stuff/suggest.py
+rename to plugins/suggest.py
+diff --git a/disabled_stuff/wordoftheday.py b/plugins/wordoftheday.py
+similarity index 100%
+rename from disabled_stuff/wordoftheday.py
+rename to plugins/wordoftheday.py
+-- 
+1.8.3.msysgit.0
+

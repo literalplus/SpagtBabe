@@ -1,0 +1,25 @@
+From f8f3292963859aa690ab3ddee31bdc7363124d89 Mon Sep 17 00:00:00 2001
+From: xxyy <xxyy98@gmail.com>
+Date: Sat, 4 Jan 2014 22:35:16 +0100
+Subject: [PATCH] Add own permission for +say
+
+---
+ plugins/admin.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/admin.py b/plugins/admin.py
+index 37601b1..ef68b3d 100644
+--- a/plugins/admin.py
++++ b/plugins/admin.py
+@@ -186,7 +186,7 @@ def raw(inp, conn=None, notice=None):
+     conn.send(inp)
+ 
+ 
+-@hook.command(permissions=["botcontrol"])
++@hook.command(permissions=["say"])
+ def say(inp, conn=None, chan=None):
+     """say [channel] <message> -- Makes the bot say <message> in [channel].
+     If [channel] is blank the bot will say the <message> in the channel
+-- 
+1.8.3.msysgit.0
+

@@ -1,0 +1,26 @@
+From bc9092bceb5f3cdf42d1efc9994c9a4b35bdf5b9 Mon Sep 17 00:00:00 2001
+From: xxyy <xxyy98@gmail.com>
+Date: Sat, 4 Jan 2014 22:35:31 +0100
+Subject: [PATCH] Add +ping -
+
+---
+ plugins/ping.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/plugins/ping.py b/plugins/ping.py
+index 746ea05..39e468a 100644
+--- a/plugins/ping.py
++++ b/plugins/ping.py
+@@ -16,6 +16,9 @@ def ping(inp, reply=None):
+ 
+     args = inp.split(' ')
+     host = args[0]
++    
++    if host == "-":
++        return "I am up and running."
+ 
+     # check for a seccond argument and set the ping count
+     if len(args) > 1:
+-- 
+1.8.3.msysgit.0
+

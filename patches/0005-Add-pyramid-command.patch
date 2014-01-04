@@ -1,0 +1,36 @@
+From 4c2970cd28fdd033984a11ed9f141bd0b4c3a890 Mon Sep 17 00:00:00 2001
+From: xxyy <xxyy98@gmail.com>
+Date: Sat, 4 Jan 2014 22:35:53 +0100
+Subject: [PATCH] Add pyramid command
+
+---
+ plugins/pyramid.py | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+ create mode 100644 plugins/pyramid.py
+
+diff --git a/plugins/pyramid.py b/plugins/pyramid.py
+new file mode 100644
+index 0000000..9ef9946
+--- /dev/null
++++ b/plugins/pyramid.py
+@@ -0,0 +1,17 @@
++
++from util import hook
++
++@hook.command("pyramide", permissions=["botcontrol"])
++@hook.command(permissions=["botcontrol"])
++def pyramid(inp, message=None):
++    """pyramid <text> - Am pyramid le text"""
++    
++    while len(inp) > 0:
++      message(inp)
++      if len(inp) != 1:
++        inp = inp[0:len(inp) - 1]
++        while inp[-1] == " ":
++          inp = inp[0:len(inp) - 1]
++      else:
++        break
++    message("/ ")
+-- 
+1.8.3.msysgit.0
+
