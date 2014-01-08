@@ -1,0 +1,26 @@
+From 35975af16455bc48217f2c1321b0a9bcaccc5c3e Mon Sep 17 00:00:00 2001
+From: xxyy <xxyy98@gmail.com>
+Date: Wed, 8 Jan 2014 23:41:39 +0100
+Subject: [PATCH] dat :, dat tab
+
+---
+ plugins/cookies.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/cookies.py b/plugins/cookies.py
+index 5ae0863..9d097dc 100644
+--- a/plugins/cookies.py
++++ b/plugins/cookies.py
+@@ -11,7 +11,7 @@ def cookie(inp, me=None, nick=None):
+   
+   if target == "":
+     me("shares a cookie with " + nick)
+-	return
++    return
+   
+   me("shares a cookie with " + target)
+   
+\ No newline at end of file
+-- 
+1.8.3.msysgit.0
+
