@@ -1,0 +1,17 @@
+From 52791fcad3834644212c22dc619f120003de24cb Mon Sep 17 00:00:00 2001
+From: xxyy <xxyy98@gmail.com>
+Date: Wed, 8 Jan 2014 20:38:54 +0100
+Subject: [PATCH] Move non-working stuffs and add working stuffs (reloaded)
+
+---
+ {plugins => disabled_stuff}/tell.py | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename {plugins => disabled_stuff}/tell.py (100%)
+
+diff --git a/plugins/tell.py b/disabled_stuff/tell.py
+similarity index 100%
+rename from plugins/tell.py
+rename to disabled_stuff/tell.py
+-- 
+1.8.3.msysgit.0
+

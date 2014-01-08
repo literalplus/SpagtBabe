@@ -1,4 +1,4 @@
 [submodule "CloudBot"]
 	path = CloudBot
-	url = https://github.com/CloudDev/CloudBot.git
+	url = https://github.com/ClouDev/CloudBot.git
 	branch = develop
