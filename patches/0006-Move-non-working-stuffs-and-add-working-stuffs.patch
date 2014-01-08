@@ -1,0 +1,35 @@
+From d0e90a18466eb8a24425b9b6473cb6c6db7bf992 Mon Sep 17 00:00:00 2001
+From: xxyy <xxyy98@gmail.com>
+Date: Wed, 8 Jan 2014 17:35:59 +0100
+Subject: [PATCH] Move non-working stuffs and add working stuffs
+
+---
+ disabled_stuff/cloudbot.sh => cloudbot.sh       | 0
+ {plugins => disabled_stuff}/encrypt.py          | 0
+ {plugins => disabled_stuff}/minecraft_bukget.py | 0
+ {plugins => disabled_stuff}/wordoftheday.py     | 0
+ 4 files changed, 0 insertions(+), 0 deletions(-)
+ rename disabled_stuff/cloudbot.sh => cloudbot.sh (100%)
+ rename {plugins => disabled_stuff}/encrypt.py (100%)
+ rename {plugins => disabled_stuff}/minecraft_bukget.py (100%)
+ rename {plugins => disabled_stuff}/wordoftheday.py (100%)
+
+diff --git a/disabled_stuff/cloudbot.sh b/cloudbot.sh
+similarity index 100%
+rename from disabled_stuff/cloudbot.sh
+rename to cloudbot.sh
+diff --git a/plugins/encrypt.py b/disabled_stuff/encrypt.py
+similarity index 100%
+rename from plugins/encrypt.py
+rename to disabled_stuff/encrypt.py
+diff --git a/plugins/minecraft_bukget.py b/disabled_stuff/minecraft_bukget.py
+similarity index 100%
+rename from plugins/minecraft_bukget.py
+rename to disabled_stuff/minecraft_bukget.py
+diff --git a/plugins/wordoftheday.py b/disabled_stuff/wordoftheday.py
+similarity index 100%
+rename from plugins/wordoftheday.py
+rename to disabled_stuff/wordoftheday.py
+-- 
+1.8.3.msysgit.0
+
