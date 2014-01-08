@@ -1,0 +1,37 @@
+From e9c4978761b885045ed41e31dd61bf3018b48adb Mon Sep 17 00:00:00 2001
+From: xxyy <xxyy98@gmail.com>
+Date: Wed, 8 Jan 2014 22:32:56 +0100
+Subject: [PATCH] Add +cookie command
+
+---
+ plugins/cookies.py | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+ create mode 100644 plugins/cookies.py
+
+diff --git a/plugins/cookies.py b/plugins/cookies.py
+new file mode 100644
+index 0000000..d69d258
+--- /dev/null
++++ b/plugins/cookies.py
+@@ -0,0 +1,17 @@
++from util import hook
++
++@hook.command
++@hook.command("share")
++@hook.command("cookies")
++def cookie(inp, me=None, nick=None)
++  """cookie -- Shares a cookie with you
++  cookie <User> -- Shares a cookie with <person>"""
++  
++  target = inp.strip()
++  
++  if target == "":
++    me("shares a cookie with " + nick)
++	return
++  
++  me("shares a cookie with " + target)
++  
+\ No newline at end of file
+-- 
+1.8.3.msysgit.0
+
