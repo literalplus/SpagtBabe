@@ -1,8 +1,9 @@
-From c6cb69bb67abad6406e7b06a4015f78b8731dce4 Mon Sep 17 00:00:00 2001
+From 787e7213dcf3eb931751b8904f49586b19278150 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Wed, 8 Jan 2014 23:38:06 +0100
 Subject: [PATCH] dat :
 
+Signed-off-by: xxyy <xxyy98@gmail.com>
 ---
  plugins/cookies.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

@@ -1,8 +1,9 @@
-From 52791fcad3834644212c22dc619f120003de24cb Mon Sep 17 00:00:00 2001
+From 0853f8e9ebd611cfb01dc1ab8a7b27b409c10148 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Wed, 8 Jan 2014 20:38:54 +0100
 Subject: [PATCH] Move non-working stuffs and add working stuffs (reloaded)
 
+Signed-off-by: xxyy <xxyy98@gmail.com>
 ---
  {plugins => disabled_stuff}/tell.py | 0
  1 file changed, 0 insertions(+), 0 deletions(-)

@@ -1,8 +1,9 @@
-From cb731d5912bc3a4bb68d30015cf22e6a5c907ca1 Mon Sep 17 00:00:00 2001
+From d7b7a06e7e09c5874d211d45fefe4b68da7380b5 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Sat, 4 Jan 2014 22:20:13 +0100
 Subject: [PATCH] Enable commands cleverbot,suggest,wordoftheday
 
+Signed-off-by: xxyy <xxyy98@gmail.com>
 ---
  {disabled_stuff => plugins}/cleverbot.py    | 0
  {disabled_stuff => plugins}/suggest.py      | 0

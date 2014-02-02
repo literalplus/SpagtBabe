@@ -1,8 +1,9 @@
-From bc9092bceb5f3cdf42d1efc9994c9a4b35bdf5b9 Mon Sep 17 00:00:00 2001
+From 2199d21d0090ea82ffc7ce82f04af3111fc2c7e4 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Sat, 4 Jan 2014 22:35:31 +0100
 Subject: [PATCH] Add +ping -
 
+Signed-off-by: xxyy <xxyy98@gmail.com>
 ---
  plugins/ping.py | 3 +++
  1 file changed, 3 insertions(+)

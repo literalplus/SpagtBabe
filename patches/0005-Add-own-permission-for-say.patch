@@ -1,17 +1,18 @@
-From f8f3292963859aa690ab3ddee31bdc7363124d89 Mon Sep 17 00:00:00 2001
+From 3ad0f570f10d1dcc04cc253a43b12351f5102d8e Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Sat, 4 Jan 2014 22:35:16 +0100
 Subject: [PATCH] Add own permission for +say
 
+Signed-off-by: xxyy <xxyy98@gmail.com>
 ---
  plugins/admin.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/plugins/admin.py b/plugins/admin.py
-index 37601b1..ef68b3d 100644
+index 7813b64..9e7daaf 100644
 --- a/plugins/admin.py
 +++ b/plugins/admin.py
-@@ -186,7 +186,7 @@ def raw(inp, conn=None, notice=None):
+@@ -192,7 +192,7 @@ def raw(inp, conn=None, notice=None):
      conn.send(inp)
  
  

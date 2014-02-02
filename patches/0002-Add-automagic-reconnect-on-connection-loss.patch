@@ -1,8 +1,9 @@
-From 7bf71c849349c6038d41e75c1d85fbef428cc835 Mon Sep 17 00:00:00 2001
+From f7e0e34615dfac5aaa0e64ead39494b7427cfb1f Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Sat, 4 Jan 2014 22:34:42 +0100
 Subject: [PATCH] Add automagic reconnect on connection loss
 
+Signed-off-by: xxyy <xxyy98@gmail.com>
 ---
  core/irc.py | 17 ++++++++++++++---
  1 file changed, 14 insertions(+), 3 deletions(-)

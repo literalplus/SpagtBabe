@@ -1,8 +1,9 @@
-From d0e90a18466eb8a24425b9b6473cb6c6db7bf992 Mon Sep 17 00:00:00 2001
+From 971c3a3cdf4fb90913f2eb87ea5e8b5f9ad6a49a Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Wed, 8 Jan 2014 17:35:59 +0100
 Subject: [PATCH] Move non-working stuffs and add working stuffs
 
+Signed-off-by: xxyy <xxyy98@gmail.com>
 ---
  disabled_stuff/cloudbot.sh => cloudbot.sh       | 0
  {plugins => disabled_stuff}/encrypt.py          | 0

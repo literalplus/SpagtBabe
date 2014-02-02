@@ -1,8 +1,9 @@
-From 4c2970cd28fdd033984a11ed9f141bd0b4c3a890 Mon Sep 17 00:00:00 2001
+From 2bbd477eb10722a0481d4a02134c0db7e90a1f6d Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Sat, 4 Jan 2014 22:35:53 +0100
 Subject: [PATCH] Add pyramid command
 
+Signed-off-by: xxyy <xxyy98@gmail.com>
 ---
  plugins/pyramid.py | 17 +++++++++++++++++
  1 file changed, 17 insertions(+)
