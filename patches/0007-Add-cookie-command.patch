@@ -28,7 +28,7 @@ index 0000000..ac62ffd
 +  
 +  if target == "":
 +    me("shares a cookie with " + nick)
-+	 return
++    return
 +  
 +  me("shares a cookie with " + target)
 +  
