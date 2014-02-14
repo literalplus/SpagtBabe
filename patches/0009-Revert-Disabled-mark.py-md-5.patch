@@ -1,0 +1,47 @@
+From 805f8aa0013281705d5edd4e36a0fb1ebd9b00b0 Mon Sep 17 00:00:00 2001
+From: xxyy <xxyy98@gmail.com>
+Date: Fri, 14 Feb 2014 23:50:08 +0100
+Subject: [PATCH] Revert "Disabled mark.py @md-5"
+
+This reverts commit 398b34fad5858ba3ed6db12200f20ef6629b4904.
+
+LONG LIVE MARK HARMON
+---
+ plugins/mark.py | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+ create mode 100644 plugins/mark.py
+
+diff --git a/plugins/mark.py b/plugins/mark.py
+new file mode 100644
+index 0000000..9012dcc
+--- /dev/null
++++ b/plugins/mark.py
+@@ -0,0 +1,25 @@
++import random
++from util import hook, text
++
++@hook.command('harmon', autohelp=False)
++@hook.command(autohelp=False)
++def mark(inp):
++    """mark -- Spreads the glory of Mark Harmon"""
++    responses = [
++    "Praise our lord Mark Harmon",
++    "Have you considered joining the Church of Mark Harmon?",
++    "M A R K H A R M O N",
++    "Did you know, Mark Harmon used to be a lifeguard?",
++    "Mark Harmon is our guide in these dark times.",
++    "Why not donate to the Church of Mark Harmon and help further our cause?",
++    "MERK HERMERN",
++    "Mark Harmon can cut through a hot knife with butter.",
++    "Mark Harmon can win a game of connect four in only three moves."
++    "PRAISE MARK HARMON",
++    "GLORY TO OUR LORD",
++    "Become a Mark Harmoner today and promote Mark Harmony!",
++    "The Church of Mark Harmon choir can achieve perfect Mark Harmony."
++    "Mark!"
++    ]
++
++    return random.choice(responses)
+-- 
+1.8.3.msysgit.0
+

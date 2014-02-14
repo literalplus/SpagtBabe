@@ -1,4 +1,4 @@
-From 971c3a3cdf4fb90913f2eb87ea5e8b5f9ad6a49a Mon Sep 17 00:00:00 2001
+From 4ea2e919a568ab40afc7e6c52c64991d7cf7e875 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Wed, 8 Jan 2014 17:35:59 +0100
 Subject: [PATCH] Move non-working stuffs and add working stuffs
@@ -8,11 +8,13 @@ Signed-off-by: xxyy <xxyy98@gmail.com>
  disabled_stuff/cloudbot.sh => cloudbot.sh       | 0
  {plugins => disabled_stuff}/encrypt.py          | 0
  {plugins => disabled_stuff}/minecraft_bukget.py | 0
+ {plugins => disabled_stuff}/tell.py             | 0
  {plugins => disabled_stuff}/wordoftheday.py     | 0
- 4 files changed, 0 insertions(+), 0 deletions(-)
+ 5 files changed, 0 insertions(+), 0 deletions(-)
  rename disabled_stuff/cloudbot.sh => cloudbot.sh (100%)
  rename {plugins => disabled_stuff}/encrypt.py (100%)
  rename {plugins => disabled_stuff}/minecraft_bukget.py (100%)
+ rename {plugins => disabled_stuff}/tell.py (100%)
  rename {plugins => disabled_stuff}/wordoftheday.py (100%)
 
 diff --git a/disabled_stuff/cloudbot.sh b/cloudbot.sh
@@ -27,6 +29,10 @@ diff --git a/plugins/minecraft_bukget.py b/disabled_stuff/minecraft_bukget.py
 similarity index 100%
 rename from plugins/minecraft_bukget.py
 rename to disabled_stuff/minecraft_bukget.py
+diff --git a/plugins/tell.py b/disabled_stuff/tell.py
+similarity index 100%
+rename from plugins/tell.py
+rename to disabled_stuff/tell.py
 diff --git a/plugins/wordoftheday.py b/disabled_stuff/wordoftheday.py
 similarity index 100%
 rename from plugins/wordoftheday.py

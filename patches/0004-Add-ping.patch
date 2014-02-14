@@ -1,4 +1,4 @@
-From 2199d21d0090ea82ffc7ce82f04af3111fc2c7e4 Mon Sep 17 00:00:00 2001
+From bd51c5708bcce15fbce62c4c0ff307cf9ce5fc15 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Sat, 4 Jan 2014 22:35:31 +0100
 Subject: [PATCH] Add +ping -
@@ -9,10 +9,10 @@ Signed-off-by: xxyy <xxyy98@gmail.com>
  1 file changed, 3 insertions(+)
 
 diff --git a/plugins/ping.py b/plugins/ping.py
-index 746ea05..39e468a 100644
+index 66286df..21f1882 100644
 --- a/plugins/ping.py
 +++ b/plugins/ping.py
-@@ -16,6 +16,9 @@ def ping(inp, reply=None):
+@@ -19,6 +19,9 @@ def ping(inp, reply=None):
  
      args = inp.split(' ')
      host = args[0]
@@ -20,7 +20,7 @@ index 746ea05..39e468a 100644
 +    if host == "-":
 +        return "I am up and running."
  
-     # check for a seccond argument and set the ping count
+     # check for a second argument and set the ping count
      if len(args) > 1:
 -- 
 1.8.3.msysgit.0

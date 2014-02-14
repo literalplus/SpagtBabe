@@ -1,4 +1,4 @@
-From f7e0e34615dfac5aaa0e64ead39494b7427cfb1f Mon Sep 17 00:00:00 2001
+From 232f7d1b7b64529fe157d2cff39ee1816de8d735 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Sat, 4 Jan 2014 22:34:42 +0100
 Subject: [PATCH] Add automagic reconnect on connection loss

@@ -1,4 +1,4 @@
-From 5780748f5158b840c0be8c013e493532712a02b0 Mon Sep 17 00:00:00 2001
+From 4b07ba52135405eda3303b149b8c3e213705d9ec Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Wed, 8 Jan 2014 22:32:56 +0100
 Subject: [PATCH] Add +cookie command
@@ -11,7 +11,7 @@ Signed-off-by: xxyy <xxyy98@gmail.com>
 
 diff --git a/plugins/cookies.py b/plugins/cookies.py
 new file mode 100644
-index 0000000..d69d258
+index 0000000..ac62ffd
 --- /dev/null
 +++ b/plugins/cookies.py
 @@ -0,0 +1,17 @@
@@ -20,7 +20,7 @@ index 0000000..d69d258
 +@hook.command
 +@hook.command("share")
 +@hook.command("cookies")
-+def cookie(inp, me=None, nick=None)
++def cookie(inp, me=None, nick=None):
 +  """cookie -- Shares a cookie with you
 +  cookie <User> -- Shares a cookie with <person>"""
 +  
@@ -28,7 +28,7 @@ index 0000000..d69d258
 +  
 +  if target == "":
 +    me("shares a cookie with " + nick)
-+	return
++	 return
 +  
 +  me("shares a cookie with " + target)
 +  

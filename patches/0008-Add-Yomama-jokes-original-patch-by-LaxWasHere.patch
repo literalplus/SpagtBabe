@@ -1,8 +1,9 @@
-From 78d70d7c88f333014841329c1a2bb0b5e767fb36 Mon Sep 17 00:00:00 2001
+From 6090e87e4dee7c1e7fb730ead2922a8deea4e7c9 Mon Sep 17 00:00:00 2001
 From: LaxWasHere <public@LaxWasHere.com>
 Date: Sun, 2 Feb 2014 02:15:27 +0100
 Subject: [PATCH] Add Yomama jokes (original patch by @LaxWasHere)
 
+Signed-off-by: xxyy <xxyy98@gmail.com>
 ---
  plugins/attacks.py   |  22 +++-
  plugins/data/ymm.txt | 342 +++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -10,10 +11,10 @@ Subject: [PATCH] Add Yomama jokes (original patch by @LaxWasHere)
  create mode 100644 plugins/data/ymm.txt
 
 diff --git a/plugins/attacks.py b/plugins/attacks.py
-index 643a184..a6ca530 100644
+index feb00b8..879318a 100644
 --- a/plugins/attacks.py
 +++ b/plugins/attacks.py
-@@ -12,8 +12,12 @@ with open("plugins/data/insults.txt") as f:
+@@ -14,8 +14,12 @@ with open("plugins/data/insults.txt") as f:
  with open("plugins/data/flirts.txt") as f:
      flirts = [line.strip() for line in f.readlines()
                if not line.startswith("//")]
@@ -27,7 +28,7 @@ index 643a184..a6ca530 100644
  @hook.command
  def lart(inp, action=None, nick=None, conn=None, notice=None):
      """lart <user> -- LARTs <user>."""
-@@ -68,3 +72,19 @@ def flirt(inp, action=None, conn=None, notice=None):
+@@ -70,3 +74,19 @@ def flirt(inp, action=None, conn=None, notice=None):
  
      out = 'flirts with {}... "{}"'.format(target, random.choice(flirts))
      action(out)
