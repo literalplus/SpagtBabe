@@ -1,10 +1,9 @@
 #!/bin/bash
 echo "=======================Cleaning"
-git submodule deinit --force . >/dev/null
-rm -rf CloudBot >/dev/null
+./clean.sh
 echo "========================Cloning"
-git submodule add -b develop --force https://github.com/ClouDev/CloudBot.git
-git submodule update --init --remote
+git submodule add https://github.com/ClouDev/CloudBot.git
+git submodule update --init --rebase CloudBOt
 cd CloudBot
 echo "=======================Patching"
 echo "Applying patches!"
@@ -25,6 +24,11 @@ else
         echo "Config not found! Copying default config (please edit CloudBot/config)"
         echo "If you want your config there automagically, make a file with name config in the main directory."
         cp config.default config
+    fi
+    
+    if [ -d ../data ]; then
+        echo "Found previous data! Copying!"
+        cp -r ../data plugins/data
     fi
 fi
 
