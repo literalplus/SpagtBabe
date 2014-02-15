@@ -3,7 +3,6 @@ echo "=======================Cleaning"
 ./clean.sh
 echo "========================Cloning"
 git submodule add https://github.com/ClouDev/CloudBot.git
-git submodule update --init --rebase CloudBOt
 cd CloudBot
 echo "=======================Patching"
 echo "Applying patches!"

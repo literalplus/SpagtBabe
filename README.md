@@ -19,3 +19,8 @@ git submodule update
 # comment out the line which says "rm-rf CloudBot >/dev/null" from init.sh (it's near line 4)
 ./init.sh #WILL output some usage messages, but you can ignore these.
 ````
+
+Notice
+======
+The content of this repository is shipped without any warranty, explicit or implicit. 
+Using the shell scripts on Windows systems may lead to unexpected behaviour.
