@@ -1,7 +1,7 @@
-From a2d4dbbc9341fbd6486950fe9d1fcce0fa7ce469 Mon Sep 17 00:00:00 2001
+From ba9e9c3bc0df85519423fa55b111d9d8eecf9f40 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Wed, 8 Jan 2014 17:35:59 +0100
-Subject: [PATCH] Disable tell,encrypt and minecarft_bukget since they are not
+Subject: [PATCH] Disable tell,encrypt and minecraft_bukget since they are not
  working on the target system
 
 Signed-off-by: xxyy <xxyy98@gmail.com>

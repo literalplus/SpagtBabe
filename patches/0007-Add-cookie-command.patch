@@ -1,4 +1,4 @@
-From c618e654e207e6c6e9c72d68621f74e28baaed0d Mon Sep 17 00:00:00 2001
+From ff46dc712432356ebdb4d824b2dc341fe66b3dd2 Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Sat, 1 Mar 2014 20:56:22 +0100
 Subject: [PATCH] Add +cookie command

@@ -18,7 +18,7 @@ echo "Cleaning..."
 
 if [ -d data/ ]; then
     rm -rf data_backup
-    mv -f data/ data_backup
+    mv -f data data_backup
     echo "Made backup of old data backup to data_backup/!"
 fi
 
