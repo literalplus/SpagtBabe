@@ -1,26 +1,19 @@
-From 4fc7af69f23c9e2295f29e501766333dfcb38bbe Mon Sep 17 00:00:00 2001
+From 70d9ea9d0333ad41af7e86dadfb4dbdbb927864b Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Wed, 8 Jan 2014 17:35:59 +0100
-Subject: [PATCH] Move non-working stuffs and add working stuffs
+Subject: [PATCH] Disable tell,encrypt and minecarft_bukget since they are not
+ working on the target system
 
 Signed-off-by: xxyy <xxyy98@gmail.com>
 ---
- disabled_stuff/cloudbot.sh => cloudbot.sh       | 0
  {plugins => disabled_stuff}/encrypt.py          | 0
  {plugins => disabled_stuff}/minecraft_bukget.py | 0
  {plugins => disabled_stuff}/tell.py             | 0
- {plugins => disabled_stuff}/wordoftheday.py     | 0
- 5 files changed, 0 insertions(+), 0 deletions(-)
- rename disabled_stuff/cloudbot.sh => cloudbot.sh (100%)
+ 3 files changed, 0 insertions(+), 0 deletions(-)
  rename {plugins => disabled_stuff}/encrypt.py (100%)
  rename {plugins => disabled_stuff}/minecraft_bukget.py (100%)
  rename {plugins => disabled_stuff}/tell.py (100%)
- rename {plugins => disabled_stuff}/wordoftheday.py (100%)
 
-diff --git a/disabled_stuff/cloudbot.sh b/cloudbot.sh
-similarity index 100%
-rename from disabled_stuff/cloudbot.sh
-rename to cloudbot.sh
 diff --git a/plugins/encrypt.py b/disabled_stuff/encrypt.py
 similarity index 100%
 rename from plugins/encrypt.py
@@ -33,10 +26,6 @@ diff --git a/plugins/tell.py b/disabled_stuff/tell.py
 similarity index 100%
 rename from plugins/tell.py
 rename to disabled_stuff/tell.py
-diff --git a/plugins/wordoftheday.py b/disabled_stuff/wordoftheday.py
-similarity index 100%
-rename from plugins/wordoftheday.py
-rename to disabled_stuff/wordoftheday.py
 -- 
 1.8.3.msysgit.0
 
