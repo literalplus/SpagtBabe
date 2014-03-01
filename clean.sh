@@ -1,3 +1,8 @@
+if [ ! -d CloudBot/ ]; then
+    echo "No CloudBot found - Nothing to clean!"
+    exit 0
+fi
+
 echo "This is going to remove your current CloudBot working copy! (But backup the plugins/data/ folder)"
 # Taken from http://stackoverflow.com/a/1885534/1117552
 read -p "Are you sure that you want to update CloudBot with your SpagtBabe patches? " -n 1 -r
