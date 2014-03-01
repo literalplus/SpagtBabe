@@ -1,4 +1,4 @@
-From 3e757528e55cedee32aa9203ce04a800c4344e0a Mon Sep 17 00:00:00 2001
+From 0f374864c101d8829346801f11fcaddd3e85974d Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Mon, 24 Feb 2014 23:41:01 +0100
 Subject: [PATCH] Change the connection process for better reconnecting:
@@ -6,11 +6,11 @@ Subject: [PATCH] Change the connection process for better reconnecting:
  output the connection's name, Change how reconnecting works
 
 ---
- core/irc.py | 51 ++++++++++++++++++++++++++++++++++++++++-----------
- 1 file changed, 40 insertions(+), 11 deletions(-)
+ core/irc.py | 54 ++++++++++++++++++++++++++++++++++++++++++------------
+ 1 file changed, 42 insertions(+), 12 deletions(-)
 
 diff --git a/core/irc.py b/core/irc.py
-index 35d4efa..647fa88 100644
+index 35d4efa..f6a16ee 100644
 --- a/core/irc.py
 +++ b/core/irc.py
 @@ -3,6 +3,8 @@ import socket
@@ -22,7 +22,7 @@ index 35d4efa..647fa88 100644
  
  from ssl import wrap_socket, CERT_NONE, CERT_REQUIRED, SSLError
  
-@@ -30,7 +32,7 @@ def censor(text):
+@@ -30,23 +32,39 @@ def censor(text):
  class crlf_tcp(object):
      """Handles tcp connections that consist of utf-8 lines ending with crlf"""
  
@@ -31,10 +31,13 @@ index 35d4efa..647fa88 100644
          self.ibuffer = ""
          self.obuffer = ""
          self.oqueue = Queue.Queue()  # lines to be sent out
-@@ -39,14 +41,29 @@ class crlf_tcp(object):
+         self.iqueue = Queue.Queue()  # lines that were received
+         self.socket = self.create_socket()
++        self.socket.settimeout(timeout)
++        self.timeout = timeout
          self.host = host
          self.port = port
-         self.timeout = timeout
+-        self.timeout = timeout
 +        self.name = name
  
      def create_socket(self):
@@ -64,11 +67,11 @@ index 35d4efa..647fa88 100644
  
      def recv_from_socket(self, nbytes):
          return self.socket.recv(nbytes)
-@@ -55,24 +72,31 @@ class crlf_tcp(object):
+@@ -55,24 +73,31 @@ class crlf_tcp(object):
          return socket.timeout
  
      def handle_receive_exception(self, error, last_timestamp):
-+        print(traceback.format_exc())
++        print("IRC exception: " + traceback.format_exc())
          if time.time() - last_timestamp > self.timeout:
              self.iqueue.put(StopIteration)
              self.socket.close()
@@ -98,7 +101,7 @@ index 35d4efa..647fa88 100644
                          return
                      time.sleep(1)
              except (self.get_timeout_exception_type(), socket.error) as e:
-@@ -97,9 +121,9 @@ class crlf_tcp(object):
+@@ -97,9 +122,9 @@ class crlf_tcp(object):
  class crlf_ssl_tcp(crlf_tcp):
      """Handles ssl tcp connetions that consist of utf-8 lines ending with crlf"""
  
@@ -110,7 +113,7 @@ index 35d4efa..647fa88 100644
  
      def create_socket(self):
          return wrap_socket(crlf_tcp.create_socket(self), server_side=False,
-@@ -137,6 +161,8 @@ class IRC(object):
+@@ -137,6 +162,8 @@ class IRC(object):
          self.nick = nick
          self.history = {}
          self.vars = {}
@@ -119,7 +122,7 @@ index 35d4efa..647fa88 100644
  
          self.out = Queue.Queue()  # responses from the server are placed here
          # format: [rawline, prefix, command, params,
-@@ -146,7 +172,7 @@ class IRC(object):
+@@ -146,7 +173,7 @@ class IRC(object):
          thread.start_new_thread(self.parse_loop, ())
  
      def create_connection(self):
@@ -128,7 +131,7 @@ index 35d4efa..647fa88 100644
  
      def connect(self):
          self.conn = self.create_connection()
-@@ -163,9 +189,12 @@ class IRC(object):
+@@ -163,9 +190,12 @@ class IRC(object):
              msg = self.conn.iqueue.get()
  
              if msg == StopIteration:
@@ -142,7 +145,7 @@ index 35d4efa..647fa88 100644
              # parse the message
              if msg.startswith(":"):  # has a prefix
                  prefix, command, params = irc_prefix_rem(msg).groups()
-@@ -232,4 +261,4 @@ class SSLIRC(IRC):
+@@ -232,4 +262,4 @@ class SSLIRC(IRC):
          IRC.__init__(self, name, server, nick, port, channels, conf)
  
      def create_connection(self):
