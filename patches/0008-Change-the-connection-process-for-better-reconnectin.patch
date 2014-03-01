@@ -1,4 +1,4 @@
-From f81dbde4a46f571f2c3c93d0b34312b2eba01e89 Mon Sep 17 00:00:00 2001
+From 3e757528e55cedee32aa9203ce04a800c4344e0a Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Mon, 24 Feb 2014 23:41:01 +0100
 Subject: [PATCH] Change the connection process for better reconnecting:
@@ -6,11 +6,11 @@ Subject: [PATCH] Change the connection process for better reconnecting:
  output the connection's name, Change how reconnecting works
 
 ---
- core/irc.py | 48 +++++++++++++++++++++++++++++++++++++-----------
- 1 file changed, 37 insertions(+), 11 deletions(-)
+ core/irc.py | 51 ++++++++++++++++++++++++++++++++++++++++-----------
+ 1 file changed, 40 insertions(+), 11 deletions(-)
 
 diff --git a/core/irc.py b/core/irc.py
-index 35d4efa..a6d6a68 100644
+index 35d4efa..647fa88 100644
 --- a/core/irc.py
 +++ b/core/irc.py
 @@ -3,6 +3,8 @@ import socket
@@ -31,7 +31,7 @@ index 35d4efa..a6d6a68 100644
          self.ibuffer = ""
          self.obuffer = ""
          self.oqueue = Queue.Queue()  # lines to be sent out
-@@ -39,14 +41,26 @@ class crlf_tcp(object):
+@@ -39,14 +41,29 @@ class crlf_tcp(object):
          self.host = host
          self.port = port
          self.timeout = timeout
@@ -45,23 +45,26 @@ index 35d4efa..a6d6a68 100644
 -        thread.start_new_thread(self.recv_loop, ())
 -        thread.start_new_thread(self.send_loop, ())
 +        #while True:
-+            print 'Trying to connect to '+str(self.name)+'..'
-+              try:
-+                errnum = self.socket.connect_ex((self.host, self.port))
-+                if errnum == 0:
-+                    thread.start_new_thread(self.recv_loop, ())
-+                    thread.start_new_thread(self.send_loop, ())
-+                    print '(Re-)connected to '+str(self.name)+' successfully.'
-+                    return
-+                    print 'Connection to '+str(self.name)+' failed. Retrying in 10 seconds. (err# '+str(errnum)+')'
-+                    time.sleep(10) #Stop and then try again
-+              except socket.error as err:
-+                print str(self.name)+': Socket error occurred. Retrying in 10 seconds.', err
-+                time.sleep(10) #Stop and then try again
++        print 'Trying to connect to '+str(self.name)+'..'
++        try:
++            errnum = self.socket.connect_ex((self.host, self.port))
++
++            if errnum == 0:
++                print '(Re-)connected to '+str(self.name)+' successfully.'
++            else:
++                print 'Connection to '+str(self.name)+' failed. Retrying in '+str(self.timeout * 1.5)+' seconds. (err# '+str(errnum)+')'
++
++            thread.start_new_thread(self.recv_loop, ())
++            thread.start_new_thread(self.send_loop, ())
++        except socket.error as err:
++            print str(self.name)+': Socket error occurred. Retrying in '+str(self.timeout / 2)+' seconds.', err
++            time.sleep(self.timeout / 2)
++            print "Timeout ended for "+str(self.name)+"..."
++            self.run()
  
      def recv_from_socket(self, nbytes):
          return self.socket.recv(nbytes)
-@@ -55,24 +69,31 @@ class crlf_tcp(object):
+@@ -55,24 +72,31 @@ class crlf_tcp(object):
          return socket.timeout
  
      def handle_receive_exception(self, error, last_timestamp):
@@ -95,7 +98,7 @@ index 35d4efa..a6d6a68 100644
                          return
                      time.sleep(1)
              except (self.get_timeout_exception_type(), socket.error) as e:
-@@ -97,9 +118,9 @@ class crlf_tcp(object):
+@@ -97,9 +121,9 @@ class crlf_tcp(object):
  class crlf_ssl_tcp(crlf_tcp):
      """Handles ssl tcp connetions that consist of utf-8 lines ending with crlf"""
  
@@ -107,7 +110,7 @@ index 35d4efa..a6d6a68 100644
  
      def create_socket(self):
          return wrap_socket(crlf_tcp.create_socket(self), server_side=False,
-@@ -137,6 +158,8 @@ class IRC(object):
+@@ -137,6 +161,8 @@ class IRC(object):
          self.nick = nick
          self.history = {}
          self.vars = {}
@@ -116,7 +119,7 @@ index 35d4efa..a6d6a68 100644
  
          self.out = Queue.Queue()  # responses from the server are placed here
          # format: [rawline, prefix, command, params,
-@@ -146,7 +169,7 @@ class IRC(object):
+@@ -146,7 +172,7 @@ class IRC(object):
          thread.start_new_thread(self.parse_loop, ())
  
      def create_connection(self):
@@ -125,7 +128,7 @@ index 35d4efa..a6d6a68 100644
  
      def connect(self):
          self.conn = self.create_connection()
-@@ -163,9 +186,12 @@ class IRC(object):
+@@ -163,9 +189,12 @@ class IRC(object):
              msg = self.conn.iqueue.get()
  
              if msg == StopIteration:
@@ -139,7 +142,7 @@ index 35d4efa..a6d6a68 100644
              # parse the message
              if msg.startswith(":"):  # has a prefix
                  prefix, command, params = irc_prefix_rem(msg).groups()
-@@ -232,4 +258,4 @@ class SSLIRC(IRC):
+@@ -232,4 +261,4 @@ class SSLIRC(IRC):
          IRC.__init__(self, name, server, nick, port, channels, conf)
  
      def create_connection(self):
