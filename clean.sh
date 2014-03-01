@@ -17,7 +17,7 @@ if [ -d data/ ]; then
 fi
 
 if [ -d CloudBot/plugins/data/ ]; then
-    cp -R CloudBot/plugins/data/ data
+    cp -Rf CloudBot/plugins/data/ data
     echo "Made backup of CloudBot/plugins/data/ to data/!"
 else
     echo "Ummm... You do have plugin data, right? Did not find it."

@@ -36,16 +36,16 @@ else
     
     if [ -f config ]; then
         echo "Found config! Copying."
-        cp config CloudBot/config
+        cp -f config CloudBot/config
     else
         echo "Config not found! Copying default config (please edit CloudBot/config)"
         echo "If you want your config there automagically, make a file named `config` in the SpagtBabe root directory."
-        cp CloudBot/config.default CloudBot/config
+        cp -f CloudBot/config.default CloudBot/config
     fi
     
     if [ -d data ]; then
         echo "Found previous data! Copying!"
-        cp -r data CloudBot/plugins/data
+        cp -Rf data CloudBot/plugins/data
     fi
 fi
 echo "KTHXBYE"
