@@ -1,0 +1,18 @@
+From dd244b1e8aabc930409d706eb3e03c323b7df718 Mon Sep 17 00:00:00 2001
+From: xxyy <devnull@nowak-at.net>
+Date: Sat, 4 Jan 2014 22:20:13 +0100
+Subject: [PATCH] Enable command suggest
+
+Signed-off-by: xxyy <devnull@nowak-at.net>
+---
+ {disabled_stuff => plugins}/suggest.py      | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename {disabled_stuff => plugins}/suggest.py (100%)
+
+diff --git a/disabled_stuff/suggest.py b/plugins/suggest.py
+similarity index 100%
+rename from disabled_stuff/suggest.py
+rename to plugins/suggest.py
+-- 
+1.8.3.msysgit.0
+
