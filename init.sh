@@ -43,9 +43,9 @@ else
         cp -f CloudBot/config.default CloudBot/config
     fi
     
-    if [ -d data ]; then
-        echo "Found previous data! Copying!"
-        cp -Rf data CloudBot/plugins/data
+    if [ -d persist ]; then
+        echo "Found previous persisting data! Copying!"
+        cp -Rf persist CloudBot/persist
     fi
 fi
 echo "KTHXBYE"
