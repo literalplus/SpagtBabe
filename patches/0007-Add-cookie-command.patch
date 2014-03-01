@@ -1,4 +1,4 @@
-From 4b07ba52135405eda3303b149b8c3e213705d9ec Mon Sep 17 00:00:00 2001
+From 30f846c162ff9c134ad33b6d1fe44d3406c7875d Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Wed, 8 Jan 2014 22:32:56 +0100
 Subject: [PATCH] Add +cookie command
@@ -28,7 +28,7 @@ index 0000000..ac62ffd
 +  
 +  if target == "":
 +    me("shares a cookie with " + nick)
-+    return
++	 return
 +  
 +  me("shares a cookie with " + target)
 +  

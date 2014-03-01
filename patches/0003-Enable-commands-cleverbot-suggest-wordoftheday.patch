@@ -1,4 +1,4 @@
-From fc0e91f41ad55c10426e565982513811afbf9e99 Mon Sep 17 00:00:00 2001
+From dd244b1e8aabc930409d706eb3e03c323b7df718 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Sat, 4 Jan 2014 22:20:13 +0100
 Subject: [PATCH] Enable commands cleverbot,suggest,wordoftheday

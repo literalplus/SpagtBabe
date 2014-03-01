@@ -1,4 +1,4 @@
-From 232f7d1b7b64529fe157d2cff39ee1816de8d735 Mon Sep 17 00:00:00 2001
+From 24c39e31c64d6f651730a3c0e7ca5e20209e0b20 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Sat, 4 Jan 2014 22:34:42 +0100
 Subject: [PATCH] Add automagic reconnect on connection loss
@@ -9,7 +9,7 @@ Signed-off-by: xxyy <xxyy98@gmail.com>
  1 file changed, 14 insertions(+), 3 deletions(-)
 
 diff --git a/core/irc.py b/core/irc.py
-index 7d5896c..921c47f 100644
+index 35d4efa..e184fee 100644
 --- a/core/irc.py
 +++ b/core/irc.py
 @@ -44,9 +44,20 @@ class crlf_tcp(object):
