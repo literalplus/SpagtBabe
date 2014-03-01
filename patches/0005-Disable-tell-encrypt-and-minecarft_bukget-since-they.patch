@@ -1,4 +1,4 @@
-From 70d9ea9d0333ad41af7e86dadfb4dbdbb927864b Mon Sep 17 00:00:00 2001
+From a2d4dbbc9341fbd6486950fe9d1fcce0fa7ce469 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Wed, 8 Jan 2014 17:35:59 +0100
 Subject: [PATCH] Disable tell,encrypt and minecarft_bukget since they are not
