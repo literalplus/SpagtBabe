@@ -16,17 +16,17 @@ fi
 
 echo "Cleaning..."
 
-if [ -d data/ ]; then
-    rm -rf data_backup
-    mv -f data data_backup
-    echo "Made backup of old data backup to data_backup/!"
+if [ -d persist/ ]; then
+    rm -rf persist_backup
+    mv -f persist persist_backup
+    echo "Made backup of old persist backup to persist_backup/!"
 fi
 
-if [ -d CloudBot/plugins/data/ ]; then
-    cp -Rf CloudBot/plugins/data/ data
-    echo "Made backup of CloudBot/plugins/data/ to data/!"
+if [ -d CloudBot/persist/ ]; then
+    cp -Rf CloudBot/persist/ persist
+    echo "Made backup of CloudBot/persist to persist/!"
 else
-    echo "Ummm... You do have plugin data, right? Did not find it."
+    echo "No persisting data found."
 fi
 
 echo "Now removing CloudBot working copy..."
