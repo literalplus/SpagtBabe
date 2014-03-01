@@ -1,0 +1,26 @@
+From 6ee621708de6d1bd4a09b284f503e0fd93947d0c Mon Sep 17 00:00:00 2001
+From: xxyy <devnull@nowak-at.net>
+Date: Sat, 1 Mar 2014 23:58:58 +0100
+Subject: [PATCH] Ignore SpagtBridge relayed messages
+
+---
+ core/main.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/core/main.py b/core/main.py
+index 0054b0a..b26fe5a 100644
+--- a/core/main.py
++++ b/core/main.py
+@@ -156,6 +156,9 @@ def main(conn, out):
+     for func, args in bot.events[inp.command] + bot.events['*']:
+         dispatch(Input(conn, *out), "event", func, args)
+ 
++    if inp.nick == 'S':
++        return
++
+     if inp.command == 'PRIVMSG':
+         # COMMANDS
+         if inp.chan == inp.nick:  # private message, no command prefix
+-- 
+1.8.3.msysgit.0
+
