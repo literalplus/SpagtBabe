@@ -1,4 +1,4 @@
-From e9f1f08c5b815c7a1cbe7006539f6d92ea40ca92 Mon Sep 17 00:00:00 2001
+From 1d710afbaef520bedf5036454052d5e13c30d2db Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Mon, 24 Feb 2014 23:41:01 +0100
 Subject: [PATCH] Change the connection process for better reconnecting:
