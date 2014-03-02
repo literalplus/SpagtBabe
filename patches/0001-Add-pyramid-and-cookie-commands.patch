@@ -1,37 +1,52 @@
-From ef57c59166e56c2eaca980e42eed19936c6c44b9 Mon Sep 17 00:00:00 2001
+From 8828f738ac748df0abbc4888d70575367075be30 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Sat, 4 Jan 2014 22:35:53 +0100
 Subject: [PATCH] Add pyramid and cookie commands
 
 ---
- plugins/cookies.py | 16 ++++++++++++++++
+ plugins/cookies.py | 31 +++++++++++++++++++++++++++++++
  plugins/pyramid.py | 17 +++++++++++++++++
- 2 files changed, 33 insertions(+)
+ 2 files changed, 48 insertions(+)
  create mode 100644 plugins/cookies.py
  create mode 100644 plugins/pyramid.py
 
 diff --git a/plugins/cookies.py b/plugins/cookies.py
 new file mode 100644
-index 0000000..84c8cc3
+index 0000000..91a0258
 --- /dev/null
 +++ b/plugins/cookies.py
-@@ -0,0 +1,16 @@
+@@ -0,0 +1,31 @@
 +from util import hook
 +
 +
-+@hook.command
-+@hook.command("share")
-+@hook.command("cookies")
-+def cookie(inp, me=None, nick=None):
-+    """cookie -- Shares a cookie with you
-+    cookie <User> -- Shares a cookie with <person>"""
++@hook.command(autohelp = False)
++def cookie(inp, action=None, nick=None):
++    """cookie [target] -- Shares a cookie with [target]. Defaults to sharing a cookie with you."""
 +
 +    target = inp.strip()
 +
 +    if target == "":
-+        me("shares a cookie with " + nick)
-+        return
-+    me("shares a cookie with " + target)
++        target = nick
++    action("shares a cookie with " + target)
++
++@hook.command
++def cookies(inp, action = None, nick = None):
++    """cookies [target][:amount]-- Shares [amount] cookies with [target]. Defaults to sharing cookies with you"""
++
++    inp = inp.strip()
++
++    if ":" in inp:
++        pos = inp.rfind(":")
++        target = inp[:pos]
++        amount = inp[pos + 1:] + " "
++    else:
++        target = inp.strip()
++        amount = ""
++
++    if target == "":
++        target = nick
++    
++    action("shares " + amount + "cookies with " + target)
 diff --git a/plugins/pyramid.py b/plugins/pyramid.py
 new file mode 100644
 index 0000000..9ef9946
