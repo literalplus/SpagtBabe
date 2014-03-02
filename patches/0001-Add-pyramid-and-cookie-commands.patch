@@ -1,0 +1,60 @@
+From ef57c59166e56c2eaca980e42eed19936c6c44b9 Mon Sep 17 00:00:00 2001
+From: xxyy <xxyy98@gmail.com>
+Date: Sat, 4 Jan 2014 22:35:53 +0100
+Subject: [PATCH] Add pyramid and cookie commands
+
+---
+ plugins/cookies.py | 16 ++++++++++++++++
+ plugins/pyramid.py | 17 +++++++++++++++++
+ 2 files changed, 33 insertions(+)
+ create mode 100644 plugins/cookies.py
+ create mode 100644 plugins/pyramid.py
+
+diff --git a/plugins/cookies.py b/plugins/cookies.py
+new file mode 100644
+index 0000000..84c8cc3
+--- /dev/null
++++ b/plugins/cookies.py
+@@ -0,0 +1,16 @@
++from util import hook
++
++
++@hook.command
++@hook.command("share")
++@hook.command("cookies")
++def cookie(inp, me=None, nick=None):
++    """cookie -- Shares a cookie with you
++    cookie <User> -- Shares a cookie with <person>"""
++
++    target = inp.strip()
++
++    if target == "":
++        me("shares a cookie with " + nick)
++        return
++    me("shares a cookie with " + target)
+diff --git a/plugins/pyramid.py b/plugins/pyramid.py
+new file mode 100644
+index 0000000..9ef9946
+--- /dev/null
++++ b/plugins/pyramid.py
+@@ -0,0 +1,17 @@
++
++from util import hook
++
++@hook.command("pyramide", permissions=["botcontrol"])
++@hook.command(permissions=["botcontrol"])
++def pyramid(inp, message=None):
++    """pyramid <text> - Am pyramid le text"""
++    
++    while len(inp) > 0:
++      message(inp)
++      if len(inp) != 1:
++        inp = inp[0:len(inp) - 1]
++        while inp[-1] == " ":
++          inp = inp[0:len(inp) - 1]
++      else:
++        break
++    message("/ ")
+-- 
+1.8.3.msysgit.0
+
