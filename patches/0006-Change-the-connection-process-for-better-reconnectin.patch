@@ -1,4 +1,4 @@
-From 1d710afbaef520bedf5036454052d5e13c30d2db Mon Sep 17 00:00:00 2001
+From 6d62335a6a030b32dab408aa737ac9ab20c60460 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Mon, 24 Feb 2014 23:41:01 +0100
 Subject: [PATCH] Change the connection process for better reconnecting:
@@ -6,11 +6,11 @@ Subject: [PATCH] Change the connection process for better reconnecting:
  output the connection's name, Change how reconnecting works
 
 ---
- core/irc.py | 89 ++++++++++++++++++++++++++++++++++++++++++++++---------------
- 1 file changed, 68 insertions(+), 21 deletions(-)
+ core/irc.py | 92 ++++++++++++++++++++++++++++++++++++++++++++++---------------
+ 1 file changed, 70 insertions(+), 22 deletions(-)
 
 diff --git a/core/irc.py b/core/irc.py
-index 35d4efa..4eac9a6 100644
+index 35d4efa..78ea1ca 100644
 --- a/core/irc.py
 +++ b/core/irc.py
 @@ -3,6 +3,8 @@ import socket
@@ -71,7 +71,7 @@ index 35d4efa..4eac9a6 100644
  
      def recv_from_socket(self, nbytes):
          return self.socket.recv(nbytes)
-@@ -54,29 +76,49 @@ class crlf_tcp(object):
+@@ -54,29 +76,50 @@ class crlf_tcp(object):
      def get_timeout_exception_type(self):
          return socket.timeout
  
@@ -86,16 +86,17 @@ index 35d4efa..4eac9a6 100644
 +            if self.waitingforping:
 +                self.iqueue.put(StopIteration)
 +                self.socket.close()
-+                print("### IRC timeout occurred for "+str(self.name)+" and no ping reply...Closing connection.")
++                print(datetime.datetime.now().strftime("%H:%M:%S") +
++                      "### IRC timeout occurred for "+str(self.name)+" and no ping reply...Closing connection.")
 +                return True
 +            else:
-+                self.oqueue.put("PING :r u ded?")
-+                self.last_timestamp = current_time
-+                self.waitingforping = True
 +                print(datetime.datetime.now().strftime("%H:%M:%S") +
 +                      "### IRC timeout occurred for "+str(self.name)+" (Got last sign of life at " +
 +                      datetime.datetime.fromtimestamp(self.last_timestamp).strftime('%H:%M:%S') +
 +                      ")...Gently sending a PING to make sure it's not just quiet.")
++                self.oqueue.put("PING :r u ded?")
++                self.waitingforping = True
++                self.last_timestamp = current_time
 +                return False
 +        print("IRC exception: " + traceback.format_exc())
          return False
@@ -130,7 +131,16 @@ index 35d4efa..4eac9a6 100644
                      return
                  continue
  
-@@ -97,9 +139,9 @@ class crlf_tcp(object):
+@@ -87,7 +130,7 @@ class crlf_tcp(object):
+     def send_loop(self):
+         while True:
+             line = self.oqueue.get().splitlines()[0][:500]
+-            print ">>> %r" % line
++            print ">>> %r -> %s" % (line, self.name)
+             self.obuffer += line.encode('utf-8', 'replace') + '\r\n'
+             while self.obuffer:
+                 sent = self.socket.send(self.obuffer)
+@@ -97,9 +140,9 @@ class crlf_tcp(object):
  class crlf_ssl_tcp(crlf_tcp):
      """Handles ssl tcp connetions that consist of utf-8 lines ending with crlf"""
  
@@ -142,7 +152,7 @@ index 35d4efa..4eac9a6 100644
  
      def create_socket(self):
          return wrap_socket(crlf_tcp.create_socket(self), server_side=False,
-@@ -112,11 +154,11 @@ class crlf_ssl_tcp(crlf_tcp):
+@@ -112,11 +155,11 @@ class crlf_ssl_tcp(crlf_tcp):
      def get_timeout_exception_type(self):
          return SSLError
  
@@ -156,7 +166,7 @@ index 35d4efa..4eac9a6 100644
  
  
  irc_prefix_rem = re.compile(r'(.*?) (.*?) (.*)').match
-@@ -137,6 +179,8 @@ class IRC(object):
+@@ -137,6 +180,8 @@ class IRC(object):
          self.nick = nick
          self.history = {}
          self.vars = {}
@@ -165,7 +175,7 @@ index 35d4efa..4eac9a6 100644
  
          self.out = Queue.Queue()  # responses from the server are placed here
          # format: [rawline, prefix, command, params,
-@@ -146,7 +190,7 @@ class IRC(object):
+@@ -146,7 +191,7 @@ class IRC(object):
          thread.start_new_thread(self.parse_loop, ())
  
      def create_connection(self):
@@ -174,7 +184,7 @@ index 35d4efa..4eac9a6 100644
  
      def connect(self):
          self.conn = self.create_connection()
-@@ -163,9 +207,12 @@ class IRC(object):
+@@ -163,9 +208,12 @@ class IRC(object):
              msg = self.conn.iqueue.get()
  
              if msg == StopIteration:
@@ -188,7 +198,7 @@ index 35d4efa..4eac9a6 100644
              # parse the message
              if msg.startswith(":"):  # has a prefix
                  prefix, command, params = irc_prefix_rem(msg).groups()
-@@ -232,4 +279,4 @@ class SSLIRC(IRC):
+@@ -232,4 +280,4 @@ class SSLIRC(IRC):
          IRC.__init__(self, name, server, nick, port, channels, conf)
  
      def create_connection(self):
