@@ -1,0 +1,68 @@
+From 02c4be285097849e3bfdea2bcb622b4db176944d Mon Sep 17 00:00:00 2001
+From: xxyy <devnull@nowak-at.net>
+Date: Mon, 10 Mar 2014 23:51:43 +0100
+Subject: [PATCH] Allow newlines and UTF-8 messages in factoids
+
+---
+ plugins/factoids.py | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/plugins/factoids.py b/plugins/factoids.py
+index 403e6f5..eb4973c 100644
+--- a/plugins/factoids.py
++++ b/plugins/factoids.py
+@@ -46,6 +46,8 @@ def remember(inp, nick='', db=None, notice=None):
+ 
+     append = False
+ 
++    inp = string.replace(inp, "\\n", "\n")
++
+     try:
+         word, data = inp.split(None, 1)
+     except ValueError:
+@@ -69,12 +71,12 @@ def remember(inp, nick='', db=None, notice=None):
+ 
+     if old_data:
+         if append:
+-            notice("Appending \x02{}\x02 to \x02{}\x02".format(new_data, old_data))
++            notice(u"Appending \x02{}\x02 to \x02{}\x02".format(new_data, old_data))
+         else:
+-            notice('Remembering \x02{}\x02 for \x02{}\x02. Type ?{} to see it.'.format(data, word, word))
+-            notice('Previous data was \x02{}\x02'.format(old_data))
++            notice(u'Remembering \x02{}\x02 for \x02{}\x02. Type ?{} to see it.'.format(data, word, word))
++            notice(u'Previous data was \x02{}\x02'.format(old_data))
+     else:
+-        notice('Remembering \x02{}\x02 for \x02{}\x02. Type ?{} to see it.'.format(data, word, word))
++        notice(u'Remembering \x02{}\x02 for \x02{}\x02. Type ?{} to see it.'.format(data, word, word))
+ 
+ 
+ @hook.command("f", permissions=["delfactoid"])
+@@ -89,7 +91,7 @@ def forget(inp, db=None, notice=None):
+         db.execute("delete from mem where word=lower(?)",
+                    [inp])
+         db.commit()
+-        notice('"%s" has been forgotten.' % data.replace('`', "'"))
++        notice(u'"%s" has been forgotten.' % data.replace('`', "'"))
+         return
+     else:
+         notice("I don't know about that.")
+@@ -136,7 +138,7 @@ def factoid(inp, message=None, db=None, bot=None, action=None, conn=None, input=
+         # factoid preprocessors
+         if data.startswith("<py>"):
+             code = data[4:].strip()
+-            variables = 'input="""{}"""; nick="{}"; chan="{}"; bot_nick="{}";'.format(arguments.replace('"', '\\"'),
++            variables = u'input="""{}"""; nick="{}"; chan="{}"; bot_nick="{}";'.format(arguments.replace('"', '\\"'),
+                                                                                       input.nick, input.chan,
+                                                                                       input.conn.nick)
+             result = pyexec.eval_py(variables + code)
+@@ -157,6 +159,6 @@ def factoid(inp, message=None, db=None, bot=None, action=None, conn=None, input=
+                 message("Could not fetch URL.")
+         else:
+             if prefix_on:
+-                message("\x02[{}]:\x02 {}".format(factoid_id, result))
++                message(u"\x02[{}]:\x02 {}".format(factoid_id, result))
+             else:
+                 message(result)
+-- 
+1.8.3.msysgit.0
+
