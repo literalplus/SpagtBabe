@@ -1,19 +1,19 @@
-From 6515d2bb86eaca9ea15054b02c9bfa517def3762 Mon Sep 17 00:00:00 2001
+From 0a31802218f50c63c61e4305af9da13762291d6b Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Wed, 12 Mar 2014 23:02:55 +0100
 Subject: [PATCH] Add joehot plugin
 
 ---
- plugins/joehot.py | 45 +++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 45 insertions(+)
+ plugins/joehot.py | 49 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 49 insertions(+)
  create mode 100644 plugins/joehot.py
 
 diff --git a/plugins/joehot.py b/plugins/joehot.py
 new file mode 100644
-index 0000000..bdc79f2
+index 0000000..ee999f1
 --- /dev/null
 +++ b/plugins/joehot.py
-@@ -0,0 +1,45 @@
+@@ -0,0 +1,49 @@
 +#Based on an implementation by LaxWasHere
 +from util import hook
 +import random
@@ -28,6 +28,10 @@ index 0000000..bdc79f2
 +        notice("Reloading quotes!")
 +        suc = refetch_quotes()
 +        notice("Successfully reloaded quotes!" if suc else "Failed reloading quotes!")
++        notice(len(joehots) + " quotes loaded.")
++        return
++    elif "count" in inp:
++        notice(len(joehots) + " quotes loaded.")
 +        return
 +    elif inp.isdigit():
 +        try:
