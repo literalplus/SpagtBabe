@@ -1,4 +1,4 @@
-From 0a31802218f50c63c61e4305af9da13762291d6b Mon Sep 17 00:00:00 2001
+From 09c596a7ebcee66833dd1db3991f59250371d41b Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Wed, 12 Mar 2014 23:02:55 +0100
 Subject: [PATCH] Add joehot plugin
@@ -10,7 +10,7 @@ Subject: [PATCH] Add joehot plugin
 
 diff --git a/plugins/joehot.py b/plugins/joehot.py
 new file mode 100644
-index 0000000..ee999f1
+index 0000000..ad135da
 --- /dev/null
 +++ b/plugins/joehot.py
 @@ -0,0 +1,49 @@
@@ -28,10 +28,10 @@ index 0000000..ee999f1
 +        notice("Reloading quotes!")
 +        suc = refetch_quotes()
 +        notice("Successfully reloaded quotes!" if suc else "Failed reloading quotes!")
-+        notice(len(joehots) + " quotes loaded.")
++        notice(str(len(joehots)) + " quotes loaded.")
 +        return
 +    elif "count" in inp:
-+        notice(len(joehots) + " quotes loaded.")
++        notice(str(len(joehots)) + " quotes loaded.")
 +        return
 +    elif inp.isdigit():
 +        try:
