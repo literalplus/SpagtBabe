@@ -1,0 +1,25 @@
+From d6dddeeb297c01edbc8c25a5d225cfc41f5fa0f4 Mon Sep 17 00:00:00 2001
+From: xxyy <devnull@nowak-at.net>
+Date: Wed, 12 Mar 2014 21:55:43 +0100
+Subject: [PATCH] Allow to see history for nicks containing `.
+
+---
+ plugins/history.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/history.py b/plugins/history.py
+index c703bcf..ed51a79 100644
+--- a/plugins/history.py
++++ b/plugins/history.py
+@@ -68,7 +68,7 @@ def seen(inp, nick='', chan='', db=None, input=None, conn=None):
+     if inp.lower() == nick.lower():
+         return "Have you looked in a mirror lately?"
+ 
+-    if not re.match("^[A-Za-z0-9_|.\-\]\[]*$", inp.lower()):
++    if not re.match("^[A-Za-z0-9_|`.\-\]\[]*$", inp.lower()):
+         return "I can't look up that name, its impossible to use!"
+ 
+     db_init(db, conn.name)
+-- 
+1.8.3.msysgit.0
+

@@ -1,0 +1,64 @@
+From 6515d2bb86eaca9ea15054b02c9bfa517def3762 Mon Sep 17 00:00:00 2001
+From: xxyy <devnull@nowak-at.net>
+Date: Wed, 12 Mar 2014 23:02:55 +0100
+Subject: [PATCH] Add joehot plugin
+
+---
+ plugins/joehot.py | 45 +++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
+ create mode 100644 plugins/joehot.py
+
+diff --git a/plugins/joehot.py b/plugins/joehot.py
+new file mode 100644
+index 0000000..bdc79f2
+--- /dev/null
++++ b/plugins/joehot.py
+@@ -0,0 +1,45 @@
++#Based on an implementation by LaxWasHere
++from util import hook
++import random
++import urllib2
++
++joehots = []
++
++@hook.command(autohelp=False)
++def joehot(inp, notice=None):
++    """joehot - random joehot quotes"""
++    if "reload" in inp:
++        notice("Reloading quotes!")
++        suc = refetch_quotes()
++        notice("Successfully reloaded quotes!" if suc else "Failed reloading quotes!")
++        return
++    elif inp.isdigit():
++        try:
++            choice = joehots[int(inp)]
++        except IndexError as err:
++            return "I'm sorry, but I could not find a quote at this index: " + inp
++    else:
++        choice = random.choice(joehots)
++
++    if "#" in choice:
++        choice = choice[:choice.index("#")]
++
++    if choice == "":
++        return joehot("")
++
++    return '"%s" \x0308--joehot200' % choice
++
++def refetch_quotes():
++    """ Re-fetches the database from upstream"""
++    global joehots
++
++    try:
++        f = urllib2.urlopen("http://xxyy.github.io/jhq-server/joehot.qt.txt")
++        joehots = [line.strip() for line in f.readlines()
++                   if not line.startswith("#")]
++        return True
++    except urllib2.URLError as err:
++        print err.reason
++        return False
++
++refetch_quotes()
+-- 
+1.8.3.msysgit.0
+
