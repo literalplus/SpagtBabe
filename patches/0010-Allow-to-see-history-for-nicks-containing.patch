@@ -1,4 +1,4 @@
-From d6dddeeb297c01edbc8c25a5d225cfc41f5fa0f4 Mon Sep 17 00:00:00 2001
+From 0804e38fda02196f77e7762cfd8669f22f4aea39 Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Wed, 12 Mar 2014 21:55:43 +0100
 Subject: [PATCH] Allow to see history for nicks containing `.

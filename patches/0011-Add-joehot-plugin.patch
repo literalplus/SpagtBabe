@@ -1,4 +1,4 @@
-From a36503d6e349fbfb1973675c429ddac3978ed11e Mon Sep 17 00:00:00 2001
+From 3fdc9de5068c633215ded0ee3cdebcc33a2114d0 Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Wed, 12 Mar 2014 23:02:55 +0100
 Subject: [PATCH] Add joehot plugin
@@ -10,7 +10,7 @@ Subject: [PATCH] Add joehot plugin
 
 diff --git a/plugins/joehot.py b/plugins/joehot.py
 new file mode 100644
-index 0000000..48e99ea
+index 0000000..328befa
 --- /dev/null
 +++ b/plugins/joehot.py
 @@ -0,0 +1,48 @@
@@ -35,7 +35,7 @@ index 0000000..48e99ea
 +    elif inp.isdigit():
 +        try:
 +            choice = joehots[int(inp)]
-+        except IndexError as err:
++        except IndexError:
 +            return "I'm sorry, but I could not find a quote at this index: " + inp
 +    else:
 +        choice = random.choice(joehots)

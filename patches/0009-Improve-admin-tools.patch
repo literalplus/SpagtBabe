@@ -1,4 +1,4 @@
-From 46e61129773936b7b819ba1ec676719209bd41e9 Mon Sep 17 00:00:00 2001
+From f3768e0238024919d3fe67badea176f25f8c04bb Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Tue, 11 Mar 2014 19:22:15 +0100
 Subject: [PATCH] Improve admin tools
@@ -9,10 +9,10 @@ Subject: [PATCH] Improve admin tools
  2 files changed, 22 insertions(+), 14 deletions(-)
 
 diff --git a/core/irc.py b/core/irc.py
-index 78ea1ca..46390aa 100644
+index 3223073..d8eec7b 100644
 --- a/core/irc.py
 +++ b/core/irc.py
-@@ -247,9 +247,9 @@ class IRC(object):
+@@ -248,9 +248,9 @@ class IRC(object):
          if channel not in self.channels:
              self.channels.append(channel)
  
