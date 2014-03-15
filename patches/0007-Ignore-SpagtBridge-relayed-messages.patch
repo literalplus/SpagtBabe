@@ -1,4 +1,4 @@
-From a458180e7757ff7a57fe6f701cb2648b344736a9 Mon Sep 17 00:00:00 2001
+From 2b5b5df42b9b716c07e19191d8379bf129232e5e Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Sat, 1 Mar 2014 23:58:58 +0100
 Subject: [PATCH] Ignore SpagtBridge relayed messages

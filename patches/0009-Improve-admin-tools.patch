@@ -1,4 +1,4 @@
-From f3768e0238024919d3fe67badea176f25f8c04bb Mon Sep 17 00:00:00 2001
+From 9c446baf09c80167a26aaf5ea4e527c504098988 Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Tue, 11 Mar 2014 19:22:15 +0100
 Subject: [PATCH] Improve admin tools
@@ -9,7 +9,7 @@ Subject: [PATCH] Improve admin tools
  2 files changed, 22 insertions(+), 14 deletions(-)
 
 diff --git a/core/irc.py b/core/irc.py
-index 3223073..d8eec7b 100644
+index 936c813..8c3b82f 100644
 --- a/core/irc.py
 +++ b/core/irc.py
 @@ -248,9 +248,9 @@ class IRC(object):

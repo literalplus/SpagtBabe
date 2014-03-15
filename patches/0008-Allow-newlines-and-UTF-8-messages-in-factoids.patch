@@ -1,4 +1,4 @@
-From 025fc78a22f3b5280e3e5ba26d2a3ccacbafa6d9 Mon Sep 17 00:00:00 2001
+From 415cf8cc2a49ab542ccb5cc7a95137d45e040b60 Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Mon, 10 Mar 2014 23:51:43 +0100
 Subject: [PATCH] Allow newlines and UTF-8 messages in factoids

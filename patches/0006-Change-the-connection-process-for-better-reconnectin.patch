@@ -1,4 +1,4 @@
-From 2aa53a45b9f7e3f1b11bbbd1afd99f08b3cbbf60 Mon Sep 17 00:00:00 2001
+From fe7dd132a98cf1414101dcc574d6b90e8a0dfd0a Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Mon, 24 Feb 2014 23:41:01 +0100
 Subject: [PATCH] Change the connection process for better reconnecting:
@@ -10,7 +10,7 @@ Subject: [PATCH] Change the connection process for better reconnecting:
  1 file changed, 71 insertions(+), 22 deletions(-)
 
 diff --git a/core/irc.py b/core/irc.py
-index 35d4efa..3223073 100644
+index 35d4efa..936c813 100644
 --- a/core/irc.py
 +++ b/core/irc.py
 @@ -3,6 +3,8 @@ import socket
@@ -93,7 +93,7 @@ index 35d4efa..3223073 100644
 +                print(datetime.datetime.now().strftime("%H:%M:%S") +
 +                      "### IRC timeout occurred for "+str(self.name)+" (Got last sign of life at " +
 +                      datetime.datetime.fromtimestamp(self.last_timestamp).strftime('%H:%M:%S') +
-+                      ")...Gently sending a PING to make sure it's not just quiet. (Iteration "+self.waitingforping+")")
++                      ")...Gently sending a PING to make sure it's not just quiet. (Iteration "+str(self.waitingforping)+")\a")
 +                self.oqueue.put("PING :r u ded?")
 +                self.oqueue.put("PING :r u ded?")  # send twice to make sure the server does not miss it - Yes, I know this won't help.
 +                self.waitingforping += 1
@@ -119,11 +119,11 @@ index 35d4efa..3223073 100644
 +                    if curr_time - self.last_timestamp > self.timeout:
 +                        self.waitingforping += 1
 +                        self.oqueue.put("PING :r u ded?")
-+                        print("### Semi-timeout for "+str(self.name)+" reached! ("+self.waitingforping+")")
++                        print("### Semi-timeout for "+str(self.name)+" reached! ("+str(self.waitingforping)+")")
 +                    elif curr_time - self.last_timestamp > (self.timeout * 1.5):
                          self.iqueue.put(StopIteration)
                          self.socket.close()
-+                        print("### IRC timeout occurred for "+str(self.name)+" (Got last sign of life at "+datetime.datetime.fromtimestamp(self.last_timestamp).strftime('%H:%M:%S')+")!")
++                        print("### IRC timeout occurred for "+str(self.name)+" (Got last sign of life at "+datetime.datetime.fromtimestamp(self.last_timestamp).strftime('%H:%M:%S')+")\a\a!")
                          return
                      time.sleep(1)
              except (self.get_timeout_exception_type(), socket.error) as e:
