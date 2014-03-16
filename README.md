@@ -20,6 +20,13 @@ git submodule update
 ./init.sh #WILL output some usage messages, but you can ignore these.
 ````
 
+Requirements
+============
+Python reuqests libary: http://docs.python-requests.org/en/latest/user/install/
+````
+[sudo] pip install requests
+````
+
 Notice
 ======
 The content of this repository is shipped without any warranty, explicit or implicit. 
