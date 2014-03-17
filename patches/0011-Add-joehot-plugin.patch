@@ -1,19 +1,19 @@
-From 5ac3b2225c7f7976fbbbec3486f36684a2a26c9e Mon Sep 17 00:00:00 2001
+From c97cf52afb9b9d54eaa0b3360a8b400d9ee5a614 Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Wed, 12 Mar 2014 23:02:55 +0100
 Subject: [PATCH] Add joehot plugin
 
 ---
- plugins/joehot.py | 58 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 58 insertions(+)
+ plugins/joehot.py | 60 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 60 insertions(+)
  create mode 100644 plugins/joehot.py
 
 diff --git a/plugins/joehot.py b/plugins/joehot.py
 new file mode 100644
-index 0000000..6fa0b3c
+index 0000000..f0596cc
 --- /dev/null
 +++ b/plugins/joehot.py
-@@ -0,0 +1,58 @@
+@@ -0,0 +1,60 @@
 +#Based on an implementation by LaxWasHere
 +from util import hook
 +import random
@@ -40,6 +40,8 @@ index 0000000..6fa0b3c
 +        return str(len(joehots)) + " quotes loaded."
 +    elif "source" in inp:
 +        return "See all the quotes at %s. (Spoiler alert!)" % QUOTE_SOURCE
++    elif "plugin" in inp:
++        return "Want these quotes on your Spigot server? Get the official plugin here: https://github.com/Spagt/joehot200-Quote-Generator-Pro"
 +    elif "purpose" in inp:
 +        return "These quotes are solely intended for information about joehot200. This service is not intended to make fun of him. Any usage for such purpose is abuse."
 +    elif inp.isdigit():
