@@ -1,4 +1,4 @@
-From 8e6bc30f5113393cc0afb01a13887e51e05d1152 Mon Sep 17 00:00:00 2001
+From 884c94384e5f843f1ab0fb036e183c256edc4a60 Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Wed, 12 Mar 2014 23:02:55 +0100
 Subject: [PATCH] Add joehot plugin
@@ -10,7 +10,7 @@ Subject: [PATCH] Add joehot plugin
 
 diff --git a/plugins/joehot.py b/plugins/joehot.py
 new file mode 100644
-index 0000000..5992924
+index 0000000..734e54b
 --- /dev/null
 +++ b/plugins/joehot.py
 @@ -0,0 +1,65 @@
@@ -45,7 +45,7 @@ index 0000000..5992924
 +    elif "purpose" in inp:
 +        return "These quotes are solely intended for information about joehot200. This service is not intended to make fun of him. Any usage for such purpose is abuse."
 +    elif inp.isdigit():
-+        index = int(inp) - 1 # Match line numbers
++        index = int(inp) - 1  # Match line numbers
 +        try:
 +            choice = joehots[index]
 +        except IndexError:
@@ -64,7 +64,7 @@ index 0000000..5992924
 +    if choice == "":
 +        return joehot("")
 +
-+    return u'\x0309(#%d) \x03"%s" \x0308--joehot200' % (index, choice)
++    return u'\x0309(#%d) \x03"%s" \x0308--joehot200' % (index + 1, choice)  # Match line numbers
 +
 +def refetch_quotes():
 +    """ Re-fetches the database from upstream"""
