@@ -1,9 +1,10 @@
-From 527aa55517670dc250a633451fc811f643d63c0e Mon Sep 17 00:00:00 2001
+From 8fb486ed39e69dcd09706f48c22d58c05e5d286e Mon Sep 17 00:00:00 2001
 From: LaxWasHere <public@LaxWasHere.com>
 Date: Sun, 2 Feb 2014 02:15:27 +0100
 Subject: [PATCH] Add Yomama jokes (original patch by @LaxWasHere)
 
 Signed-off-by: xxyy <xxyy98@gmail.com>
+Signed-off-by: xxyy <devnull@nowak-at.net>
 ---
  plugins/attacks.py   |  22 +++-
  plugins/data/ymm.txt | 342 +++++++++++++++++++++++++++++++++++++++++++++++++++

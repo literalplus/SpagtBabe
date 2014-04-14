@@ -1,8 +1,9 @@
-From a60e2820ef5362310c3a3fdde26dbaed683809c6 Mon Sep 17 00:00:00 2001
+From cf33ba45cc041a0fe717c8c8f32a3233b8263c0e Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Wed, 12 Mar 2014 23:02:55 +0100
 Subject: [PATCH] Add joehot plugin
 
+Signed-off-by: xxyy <devnull@nowak-at.net>
 ---
  plugins/joehot.py | 65 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 65 insertions(+)

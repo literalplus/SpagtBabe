@@ -1,8 +1,9 @@
-From b4c0db6c0f8477fd6b4b772c304bff34812c2562 Mon Sep 17 00:00:00 2001
+From e595edd2928bac1ed7789bf08ea7146544dba829 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Sat, 4 Jan 2014 22:35:53 +0100
 Subject: [PATCH] Add pyramid and cookie commands
 
+Signed-off-by: xxyy <devnull@nowak-at.net>
 ---
  plugins/cookies.py | 31 +++++++++++++++++++++++++++++++
  plugins/pyramid.py | 17 +++++++++++++++++

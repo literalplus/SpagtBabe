@@ -1,8 +1,9 @@
-From 11630faa152edb34d36854e14d4c6d1afbfabb8e Mon Sep 17 00:00:00 2001
+From e21b3cd0ae774cab5db47e6aff45e3410ea3b3bb Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Wed, 12 Mar 2014 21:55:43 +0100
 Subject: [PATCH] Allow to see history for nicks containing `.
 
+Signed-off-by: xxyy <devnull@nowak-at.net>
 ---
  plugins/history.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

@@ -1,8 +1,9 @@
-From b6e1d744b697c13188654103beb9d56e96355f94 Mon Sep 17 00:00:00 2001
+From 0ff60883e5d34e88dd96237a9d285b7c95229ac3 Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Tue, 11 Mar 2014 19:22:15 +0100
 Subject: [PATCH] Improve admin tools
 
+Signed-off-by: xxyy <devnull@nowak-at.net>
 ---
  core/irc.py      |  4 ++--
  plugins/admin.py | 32 ++++++++++++++++++++------------

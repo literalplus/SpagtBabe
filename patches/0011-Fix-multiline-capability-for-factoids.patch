@@ -1,0 +1,48 @@
+From 310d383f3c58efb2ee106d2dac54245f2cf91231 Mon Sep 17 00:00:00 2001
+From: xxyy <devnull@nowak-at.net>
+Date: Mon, 14 Apr 2014 19:03:09 +0200
+Subject: [PATCH] Fix multiline-capability for factoids
+
+---
+ plugins/factoids.py | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
+
+diff --git a/plugins/factoids.py b/plugins/factoids.py
+index 3de072b..479e7a7 100644
+--- a/plugins/factoids.py
++++ b/plugins/factoids.py
+@@ -149,19 +149,26 @@ def factoid(inp, message=None, db=None, bot=None, action=None, conn=None, input=
+         result = text.multiword_replace(result, shortcodes)
+ 
+         if result.startswith("<act>"):
+-            result = result[5:].strip()
+-            action(result)
++            result = result[5:]
++            for line in result.split("\n"):
++                action(line.strip())
+         elif result.startswith("<url>"):
+             url = result[5:].strip()
+             try:
+-                message(http.get(url))
++                message_multiline(http.get(url))
+             except http.HttpError:
+                 message("Could not fetch URL.")
+         else:
+             if prefix_on:
+-                message(u"\x02[{}]:\x02 {}".format(factoid_id, result))
++                message_multiline(message, u"\x02[{}]:\x02 {}".format(factoid_id, result))
+             else:
+-                message(result)
++                message_multiline(message, result)
++
++
++def message_multiline(func_message, str_message):
++    for line in str_message.split("\n"):
++        func_message(line.strip())
++
+ 
+ @hook.command(autoHelp=False, permissions=["listfactoids"])
+ def listfactoids(inp, db=None, reply=None):
+-- 
+1.8.3.msysgit.0
+

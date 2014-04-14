@@ -1,10 +1,11 @@
-From 45b3a8cbeee301e24d2f71a00d3513865f3b9aed Mon Sep 17 00:00:00 2001
+From bef75c18716bcdfdac878d3b81fd8e49a7269a39 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Mon, 24 Feb 2014 23:41:01 +0100
 Subject: [PATCH] Change the connection process for better reconnecting:
  Improve checking for timeouts with a PING command, Make reconnect messages
  output the connection's name, Change how reconnecting works
 
+Signed-off-by: xxyy <devnull@nowak-at.net>
 ---
  core/irc.py | 93 ++++++++++++++++++++++++++++++++++++++++++++++---------------
  1 file changed, 71 insertions(+), 22 deletions(-)
