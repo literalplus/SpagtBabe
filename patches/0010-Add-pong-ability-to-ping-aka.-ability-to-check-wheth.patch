@@ -1,4 +1,4 @@
-From ac567061ae1e2cc1f490998d559998e06f8e7124 Mon Sep 17 00:00:00 2001
+From acf1c3c9573a13b3f025b53cac61fbb44db2008c Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Mon, 14 Apr 2014 18:48:59 +0200
 Subject: [PATCH] Add pong-ability to +ping (aka. ability to check whether the
@@ -9,7 +9,7 @@ Subject: [PATCH] Add pong-ability to +ping (aka. ability to check whether the
  1 file changed, 7 insertions(+), 2 deletions(-)
 
 diff --git a/plugins/ping.py b/plugins/ping.py
-index 66286df..45a5bfa 100644
+index 66286df..850556c 100644
 --- a/plugins/ping.py
 +++ b/plugins/ping.py
 @@ -9,8 +9,8 @@ from util import hook
@@ -28,7 +28,7 @@ index 66286df..45a5bfa 100644
  
      args = inp.split(' ')
 +
-+    if len(args) == 0 or args[0] == "-":
++    if args[0] == "" or args[0] == "-":
 +        action("throws a big ping-pong ball at {}'s head.".format(nick))
 +        return
 +
