@@ -14,11 +14,14 @@ index 66286df..21f1882 100644
 +++ b/plugins/ping.py
 @@ -19,6 +19,9 @@ def ping(inp, reply=None):
  
-     args = inp.split(' ')
-     host = args[0]
+-    args = inp.split(' ')
+-    host = args[0]
 +    
-+    if host == "-":
++    if len(input) == 0:
 +        return "I am up and running."
++    
++    args = inp.split(' ')
++    host = args[0]
  
      # check for a second argument and set the ping count
      if len(args) > 1:
