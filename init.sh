@@ -39,7 +39,7 @@ else
         cp -f config CloudBot/config
     else
         echo "Config not found! Copying default config (please edit CloudBot/config)"
-        echo "If you want your config there automagically, make a file named `config` in the SpagtBabe root directory."
+        echo "If you want your config there automagically, make a file named 'config' in the SpagtBabe root directory."
         cp -f CloudBot/config.default CloudBot/config
     fi
     
