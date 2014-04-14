@@ -29,6 +29,16 @@ else
     echo "No persisting data found."
 fi
 
+if [ -f config ]; then
+	mv -f config config.bkp
+	echo "Made backup of persisting config to config.bkp!"
+fi
+
+if [ -f CloudBot/config ]; then
+	cp -f CloudBot/config config
+	echo "Made backup of CloudBot/config to config (aka. persisting config)"
+fi
+
 echo "Now removing CloudBot working copy..."
 rm -rf CloudBot
 echo "Removed old CloudBot working copy!"
