@@ -1,17 +1,50 @@
-From 310d383f3c58efb2ee106d2dac54245f2cf91231 Mon Sep 17 00:00:00 2001
+From df6bbd56d4a65a6a75ba69b00588c75c4d2d29af Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Mon, 14 Apr 2014 19:03:09 +0200
 Subject: [PATCH] Fix multiline-capability for factoids
 
 ---
- plugins/factoids.py | 17 ++++++++++++-----
- 1 file changed, 12 insertions(+), 5 deletions(-)
+ plugins/factoids.py | 28 ++++++++++++++++++----------
+ 1 file changed, 18 insertions(+), 10 deletions(-)
 
 diff --git a/plugins/factoids.py b/plugins/factoids.py
-index 3de072b..479e7a7 100644
+index 3de072b..2289e02 100644
 --- a/plugins/factoids.py
 +++ b/plugins/factoids.py
-@@ -149,19 +149,26 @@ def factoid(inp, message=None, db=None, bot=None, action=None, conn=None, input=
+@@ -46,13 +46,14 @@ def remember(inp, nick='', db=None, notice=None, conn=None):
+ 
+     append = False
+ 
+-    inp = string.replace(inp, "\\n", "\n")
+-
+     try:
+         word, data = inp.split(None, 1)
+     except ValueError:
+         return remember.__doc__
+ 
++    display_data = data
++    data = string.replace(data, "\\n", "\n")
++
+     old_data = get_memory(db, word)
+ 
+     if data.startswith('+') and old_data:
+@@ -71,12 +72,12 @@ def remember(inp, nick='', db=None, notice=None, conn=None):
+ 
+     if old_data:
+         if append:
+-            notice(u"Appending \x02{}\x02 to \x02{}\x02. Type ?{} to see it.".format(new_data, old_data, word))
++            notice(u"Appending \x02{}\x02 to \x02{}\x02. Type ?{} to see it.".format(display_data[1:], old_data, word))
+         else:
+-            notice(u'Remembering \x02{}\x02 for \x02{}\x02. Type ?{} to see it.'.format(data, word, word))
++            notice(u'Remembering \x02{}\x02 for \x02{}\x02. Type ?{} to see it.'.format(display_data, word, word))
+             notice(u'Previous data was \x02{}\x02'.format(old_data))
+     else:
+-        notice(u'Remembering \x02{}\x02 for \x02{}\x02. Type ?{} to see it.'.format(data, word, word))
++        notice(u'Remembering \x02{}\x02 for \x02{}\x02. Type ?{} to see it.'.format(display_data, word, word))
+ 
+ 
+ @hook.command("f", permissions=["delfactoid"])
+@@ -149,19 +150,26 @@ def factoid(inp, message=None, db=None, bot=None, action=None, conn=None, input=
          result = text.multiword_replace(result, shortcodes)
  
          if result.startswith("<act>"):
