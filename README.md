@@ -1,9 +1,23 @@
-SpagtBabe
-=========
+SpagtBabe (aka. DogeBot)
+========================
 
-SpagtBabe is the IRC bot of Spagt. Makes sense, right? This repo contains the patches to convert a ClouDev/CloudBot into SpagtBabe.
+SpagtBabe is the other IRC bot of Spagt. Makes sense, right? This repo contains the patches to convert a ClouDev/CloudBot into SpagtBabe.
+
+It is general knowledge that is it the second best (third best on irc.spi.gt) bot in #spagt on irc.seion.us. (Better bots: [FoxBot](https://github.com/FoxDev/FoxBot), [Eliralin](https://github.com/daboross/Eliralin))
 
 Get CloudBot here: https://github.com/ClouDev/CloudBot
+
+Features
+=========
+
+* wow
+* um
+* joehot quotes on demand (try `+joehot`) [Source](https://github.com/xxyy/jhq-server)
+* Baded on open-source software
+* open-source software
+* patch-based
+* Did I mention wow already?
+* such improve
 
 Usage
 =====
