@@ -1,4 +1,4 @@
-From 710f913d7b9265bf76861cbbc03892d9b91b2fb8 Mon Sep 17 00:00:00 2001
+From adb44b1ff66262678b33b21a29a93f55a87f8fe9 Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Mon, 14 Apr 2014 19:03:09 +0200
 Subject: [PATCH] Fix multiline-capability for factoids
@@ -8,7 +8,7 @@ Subject: [PATCH] Fix multiline-capability for factoids
  1 file changed, 18 insertions(+), 10 deletions(-)
 
 diff --git a/plugins/factoids.py b/plugins/factoids.py
-index 3de072b..2289e02 100644
+index cc5fb61..b5189d2 100644
 --- a/plugins/factoids.py
 +++ b/plugins/factoids.py
 @@ -46,13 +46,14 @@ def remember(inp, nick='', db=None, notice=None, conn=None):
@@ -75,7 +75,7 @@ index 3de072b..2289e02 100644
 +
  
  @hook.command(autoHelp=False, permissions=["listfactoids"])
- def listfactoids(inp, db=None, reply=None):
+ def listfactoids(inp, db=None, conn=None, reply=None):
 -- 
 1.8.3.msysgit.0
 

@@ -1,4 +1,4 @@
-From bef75c18716bcdfdac878d3b81fd8e49a7269a39 Mon Sep 17 00:00:00 2001
+From 711de5d7a49182cace0330f40849963586aaa2a3 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Mon, 24 Feb 2014 23:41:01 +0100
 Subject: [PATCH] Change the connection process for better reconnecting:
@@ -7,11 +7,11 @@ Subject: [PATCH] Change the connection process for better reconnecting:
 
 Signed-off-by: xxyy <devnull@nowak-at.net>
 ---
- core/irc.py | 93 ++++++++++++++++++++++++++++++++++++++++++++++---------------
- 1 file changed, 71 insertions(+), 22 deletions(-)
+ core/irc.py | 110 ++++++++++++++++++++++++++++++++++++++++++++++--------------
+ 1 file changed, 84 insertions(+), 26 deletions(-)
 
 diff --git a/core/irc.py b/core/irc.py
-index 35d4efa..936c813 100644
+index 35d4efa..c3f34a6 100644
 --- a/core/irc.py
 +++ b/core/irc.py
 @@ -3,6 +3,8 @@ import socket
@@ -133,16 +133,25 @@ index 35d4efa..936c813 100644
                      return
                  continue
  
-@@ -87,7 +131,7 @@ class crlf_tcp(object):
+@@ -87,19 +131,24 @@ class crlf_tcp(object):
      def send_loop(self):
          while True:
              line = self.oqueue.get().splitlines()[0][:500]
 -            print ">>> %r" % line
-+            print "%s >>> %r -> %s" % (datetime.datetime.fromtimestamp(self.last_timestamp).strftime('%H:%M:%S'), line, self.name)
++            print u"%s >>> %r -> %s" % (datetime.datetime.fromtimestamp(self.last_timestamp).strftime('%H:%M:%S'), line, self.name)
              self.obuffer += line.encode('utf-8', 'replace') + '\r\n'
              while self.obuffer:
-                 sent = self.socket.send(self.obuffer)
-@@ -97,9 +141,9 @@ class crlf_tcp(object):
+-                sent = self.socket.send(self.obuffer)
+-                self.obuffer = self.obuffer[sent:]
++                try:
++                    sent = self.socket.send(self.obuffer)
++                    self.obuffer = self.obuffer[sent:]
++                except socket.error as err:
++                    print u"Couldn't send output buffer: %s - Closing connection." % err.message
++                    self.socket.close()
++                    self.iqueue.put(StopIteration)
+ 
+ 
  class crlf_ssl_tcp(crlf_tcp):
      """Handles ssl tcp connetions that consist of utf-8 lines ending with crlf"""
  
@@ -154,21 +163,27 @@ index 35d4efa..936c813 100644
  
      def create_socket(self):
          return wrap_socket(crlf_tcp.create_socket(self), server_side=False,
-@@ -112,11 +156,11 @@ class crlf_ssl_tcp(crlf_tcp):
+@@ -112,11 +161,15 @@ class crlf_ssl_tcp(crlf_tcp):
      def get_timeout_exception_type(self):
          return SSLError
  
 -    def handle_receive_exception(self, error, last_timestamp):
 +    def handle_receive_exception(self, error):
          # this is terrible
-         if not "timed out" in error.args[0]:
-             raise
+-        if not "timed out" in error.args[0]:
+-            raise
 -        return crlf_tcp.handle_receive_exception(self, error, last_timestamp)
++        try:
++            if not "timed out" in error.args[0]:
++                raise
++        except TypeError:
++            pass
++
 +        return crlf_tcp.handle_receive_exception(self, error)
  
  
  irc_prefix_rem = re.compile(r'(.*?) (.*?) (.*)').match
-@@ -137,6 +181,8 @@ class IRC(object):
+@@ -137,6 +190,8 @@ class IRC(object):
          self.nick = nick
          self.history = {}
          self.vars = {}
@@ -177,7 +192,7 @@ index 35d4efa..936c813 100644
  
          self.out = Queue.Queue()  # responses from the server are placed here
          # format: [rawline, prefix, command, params,
-@@ -146,7 +192,7 @@ class IRC(object):
+@@ -146,7 +201,7 @@ class IRC(object):
          thread.start_new_thread(self.parse_loop, ())
  
      def create_connection(self):
@@ -186,7 +201,7 @@ index 35d4efa..936c813 100644
  
      def connect(self):
          self.conn = self.create_connection()
-@@ -163,9 +209,12 @@ class IRC(object):
+@@ -163,9 +218,12 @@ class IRC(object):
              msg = self.conn.iqueue.get()
  
              if msg == StopIteration:
@@ -200,7 +215,7 @@ index 35d4efa..936c813 100644
              # parse the message
              if msg.startswith(":"):  # has a prefix
                  prefix, command, params = irc_prefix_rem(msg).groups()
-@@ -232,4 +281,4 @@ class SSLIRC(IRC):
+@@ -232,4 +290,4 @@ class SSLIRC(IRC):
          IRC.__init__(self, name, server, nick, port, channels, conf)
  
      def create_connection(self):
