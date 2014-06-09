@@ -1,4 +1,4 @@
-From adb44b1ff66262678b33b21a29a93f55a87f8fe9 Mon Sep 17 00:00:00 2001
+From a7375459dc89107c1133534b57c14be355e2a62d Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Mon, 14 Apr 2014 19:03:09 +0200
 Subject: [PATCH] Fix multiline-capability for factoids

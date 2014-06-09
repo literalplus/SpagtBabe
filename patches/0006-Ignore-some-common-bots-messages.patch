@@ -1,7 +1,7 @@
-From c4fcc79652d29a03647eb0c193b05b45164d0dab Mon Sep 17 00:00:00 2001
+From aab431138035c9007feda8a1f6e6c2e0747f92c6 Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Sat, 1 Mar 2014 23:58:58 +0100
-Subject: [PATCH] Ignore SpagtBridge relayed messages
+Subject: [PATCH] Ignore some common bots' messages
 
 Signed-off-by: xxyy <devnull@nowak-at.net>
 ---
@@ -9,14 +9,14 @@ Signed-off-by: xxyy <devnull@nowak-at.net>
  1 file changed, 3 insertions(+)
 
 diff --git a/core/main.py b/core/main.py
-index 0054b0a..b26fe5a 100644
+index 0054b0a..cb690e6 100644
 --- a/core/main.py
 +++ b/core/main.py
 @@ -156,6 +156,9 @@ def main(conn, out):
      for func, args in bot.events[inp.command] + bot.events['*']:
          dispatch(Input(conn, *out), "event", func, args)
  
-+    if inp.nick == 'S':
++    if inp.nick in {"Eliralin", "FoxBot", "S"}:
 +        return
 +
      if inp.command == 'PRIVMSG':
