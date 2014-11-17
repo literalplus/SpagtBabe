@@ -8,7 +8,7 @@ fi
 
 echo "========================Cloning"
 
-git submodule add -- https://github.com/ClouDev/CloudBot.git
+git submodule add -f -- https://github.com/ClouDev/CloudBot.git
 if [ -d CloudBot/ ]; then
     cd CloudBot
 else
