@@ -1,4 +1,4 @@
-From 4c87084f6e0a8c0e61583e155b5c2caaedd2c5c9 Mon Sep 17 00:00:00 2001
+From 6861baf4e7ca119c2e09b49ae28263fb0620ac2f Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Wed, 12 Mar 2014 23:02:55 +0100
 Subject: [PATCH 09/11] Add joehot plugin
@@ -11,7 +11,7 @@ Signed-off-by: xxyy <devnull@nowak-at.net>
 
 diff --git a/plugins/joehot.py b/plugins/joehot.py
 new file mode 100644
-index 0000000..361c967
+index 0000000..ffebec9
 --- /dev/null
 +++ b/plugins/joehot.py
 @@ -0,0 +1,72 @@
@@ -65,7 +65,7 @@ index 0000000..361c967
 +
 +    if "::" in choice:
 +        name = choice[:choice.index("::")] #Find name
-+        choice = choice[choice.index("::"):] #Strip name form output
++        choice = choice[choice.index("::") + 2:] #Strip name form output
 +    else:
 +        name = "joehot200"
 +
