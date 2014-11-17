@@ -1,7 +1,7 @@
-From a7375459dc89107c1133534b57c14be355e2a62d Mon Sep 17 00:00:00 2001
+From 5b7a261e88fc6d1d617fc600ea9b9fe213a9c44b Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Mon, 14 Apr 2014 19:03:09 +0200
-Subject: [PATCH] Fix multiline-capability for factoids
+Subject: [PATCH 11/11] Fix multiline-capability for factoids
 
 ---
  plugins/factoids.py | 28 ++++++++++++++++++----------
@@ -77,5 +77,5 @@ index cc5fb61..b5189d2 100644
  @hook.command(autoHelp=False, permissions=["listfactoids"])
  def listfactoids(inp, db=None, conn=None, reply=None):
 -- 
-1.8.3.msysgit.0
+2.1.2
 

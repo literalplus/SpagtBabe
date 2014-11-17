@@ -1,26 +1,27 @@
-From 9b9eb5f40a0af19c742ff0eccee5fc672ca26a41 Mon Sep 17 00:00:00 2001
+From 4c87084f6e0a8c0e61583e155b5c2caaedd2c5c9 Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Wed, 12 Mar 2014 23:02:55 +0100
-Subject: [PATCH] Add joehot plugin
+Subject: [PATCH 09/11] Add joehot plugin
 
 Signed-off-by: xxyy <devnull@nowak-at.net>
 ---
- plugins/joehot.py | 65 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 65 insertions(+)
+ plugins/joehot.py | 72 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 72 insertions(+)
  create mode 100644 plugins/joehot.py
 
 diff --git a/plugins/joehot.py b/plugins/joehot.py
 new file mode 100644
-index 0000000..734e54b
+index 0000000..361c967
 --- /dev/null
 +++ b/plugins/joehot.py
-@@ -0,0 +1,65 @@
+@@ -0,0 +1,72 @@
 +#Based on an implementation by LaxWasHere
++#Current implementation by Literallie
 +from util import hook
 +import random
 +import requests
 +
-+QUOTE_SOURCE = "http://xxyy.github.io/jhq-server/joehot.qt.txt"
++QUOTE_SOURCE = "http://git.yawk.at/?p=jhq-server.git;a=blob_plain;f=joehot.qt.txt;hb=refs/heads/gh-pages"
 +
 +joehots = []
 +
@@ -62,10 +63,16 @@ index 0000000..734e54b
 +    if "#" in choice:
 +        choice = choice[:choice.index("#")]
 +
++    if "::" in choice:
++        name = choice[:choice.index("::")] #Find name
++        choice = choice[choice.index("::"):] #Strip name form output
++    else:
++        name = "joehot200"
++
 +    if choice == "":
 +        return joehot("")
 +
-+    return u'\x0309(#%d) \x03"%s" \x0308--joehot200' % (index + 1, choice)  # Match line numbers
++    return u'\x0309(#%d) \x03"%s" \x0308--%s' % (index + 1, choice, name)  # Match line numbers
 +
 +def refetch_quotes():
 +    """ Re-fetches the database from upstream"""
@@ -81,5 +88,5 @@ index 0000000..734e54b
 +
 +refetch_quotes()
 -- 
-1.8.3.msysgit.0
+2.1.2
 

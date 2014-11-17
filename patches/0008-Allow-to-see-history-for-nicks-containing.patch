@@ -1,7 +1,7 @@
-From a7ec4460507c59ee5a1861941b1ad0aa0f8e3528 Mon Sep 17 00:00:00 2001
+From b200fe55e28135817f34657c2d9ce306aa937fd6 Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Wed, 12 Mar 2014 21:55:43 +0100
-Subject: [PATCH] Allow to see history for nicks containing `.
+Subject: [PATCH 08/11] Allow to see history for nicks containing `.
 
 Signed-off-by: xxyy <devnull@nowak-at.net>
 ---
@@ -22,5 +22,5 @@ index c703bcf..ed51a79 100644
  
      db_init(db, conn.name)
 -- 
-1.8.3.msysgit.0
+2.1.2
 

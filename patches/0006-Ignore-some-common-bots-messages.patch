@@ -1,7 +1,7 @@
-From aab431138035c9007feda8a1f6e6c2e0747f92c6 Mon Sep 17 00:00:00 2001
+From 7b793b1a288b80fd92828670e94fb3a67ca47291 Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Sat, 1 Mar 2014 23:58:58 +0100
-Subject: [PATCH] Ignore some common bots' messages
+Subject: [PATCH 06/11] Ignore some common bots' messages
 
 Signed-off-by: xxyy <devnull@nowak-at.net>
 ---
@@ -23,5 +23,5 @@ index 0054b0a..cb690e6 100644
          # COMMANDS
          if inp.chan == inp.nick:  # private message, no command prefix
 -- 
-1.8.3.msysgit.0
+2.1.2
 

@@ -1,7 +1,7 @@
-From 919f6d68351367e423b98bdb3c35fa8ef79de57b Mon Sep 17 00:00:00 2001
+From 2fc5833d9f2e5705c1616385da88412b217a71b7 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Fri, 14 Feb 2014 23:50:08 +0100
-Subject: [PATCH] Revert "Disabled mark.py @md-5"
+Subject: [PATCH 04/11] Revert "Disabled mark.py @md-5"
 
 This reverts commit 398b34fad5858ba3ed6db12200f20ef6629b4904.
 
@@ -45,5 +45,5 @@ index 0000000..9012dcc
 +
 +    return random.choice(responses)
 -- 
-1.8.3.msysgit.0
+2.1.2
 

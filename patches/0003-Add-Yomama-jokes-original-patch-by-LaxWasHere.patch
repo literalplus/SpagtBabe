@@ -1,7 +1,7 @@
-From 0b32c8d58e8e15460d8bb2d96b334e76aaa6b3c8 Mon Sep 17 00:00:00 2001
+From 8c5e94a822e403d575a0e602f06729ff41aebd61 Mon Sep 17 00:00:00 2001
 From: LaxWasHere <public@LaxWasHere.com>
 Date: Sun, 2 Feb 2014 02:15:27 +0100
-Subject: [PATCH] Add Yomama jokes (original patch by @LaxWasHere)
+Subject: [PATCH 03/11] Add Yomama jokes (original patch by @LaxWasHere)
 
 Signed-off-by: xxyy <xxyy98@gmail.com>
 Signed-off-by: xxyy <devnull@nowak-at.net>
@@ -400,5 +400,5 @@ index 0000000..c4250c1
 +{user}, The guys like to shop at Yo mama's favorite store, the gap. gap
 \ No newline at end of file
 -- 
-1.8.3.msysgit.0
+2.1.2
 

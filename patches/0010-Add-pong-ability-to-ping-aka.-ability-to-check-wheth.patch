@@ -1,8 +1,8 @@
-From 7f76db510f8671603676a9fc362a4cf873c3b1f1 Mon Sep 17 00:00:00 2001
+From 74815c6aca1fe5b38ee47d34aafcfac00002b525 Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Mon, 14 Apr 2014 18:48:59 +0200
-Subject: [PATCH] Add pong-ability to +ping (aka. ability to check whether the
- bot is up)
+Subject: [PATCH 10/11] Add pong-ability to +ping (aka. ability to check
+ whether the bot is up)
 
 ---
  plugins/ping.py | 9 +++++++--
@@ -36,5 +36,5 @@ index 66286df..850556c 100644
  
      # check for a second argument and set the ping count
 -- 
-1.8.3.msysgit.0
+2.1.2
 
