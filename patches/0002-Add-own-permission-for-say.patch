@@ -1,7 +1,7 @@
 From d5519ba7bc05282f4aa174637faf14d2e8c9c312 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Sat, 4 Jan 2014 22:35:16 +0100
-Subject: [PATCH 02/11] Add own permission for +say
+Subject: [PATCH 02/12] Add own permission for +say
 
 Signed-off-by: xxyy <xxyy98@gmail.com>
 Signed-off-by: xxyy <devnull@nowak-at.net>
@@ -23,5 +23,5 @@ index dde067e..4a67adc 100644
      """say [channel] <message> -- Makes the bot say <message> in [channel].
      If [channel] is blank the bot will say the <message> in the channel
 -- 
-2.1.2
+2.1.3
 

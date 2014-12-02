@@ -1,7 +1,7 @@
 From 6861baf4e7ca119c2e09b49ae28263fb0620ac2f Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Wed, 12 Mar 2014 23:02:55 +0100
-Subject: [PATCH 09/11] Add joehot plugin
+Subject: [PATCH 09/12] Add joehot plugin
 
 Signed-off-by: xxyy <devnull@nowak-at.net>
 ---
@@ -88,5 +88,5 @@ index 0000000..ffebec9
 +
 +refetch_quotes()
 -- 
-2.1.2
+2.1.3
 

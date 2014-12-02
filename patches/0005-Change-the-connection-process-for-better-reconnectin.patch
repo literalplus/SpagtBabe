@@ -1,7 +1,7 @@
 From f6417254cf10bce85319756ec38f74bda13c20a2 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Mon, 24 Feb 2014 23:41:01 +0100
-Subject: [PATCH 05/11] Change the connection process for better reconnecting:
+Subject: [PATCH 05/12] Change the connection process for better reconnecting:
  Improve checking for timeouts with a PING command, Make reconnect messages
  output the connection's name, Change how reconnecting works
 
@@ -222,5 +222,5 @@ index 35d4efa..c3f34a6 100644
 -        return crlf_ssl_tcp(self.server, self.port, self.ignore_cert_errors)
 +        return crlf_ssl_tcp(self.server, self.port, self.ignore_cert_errors, self.timeout, self.name)
 -- 
-2.1.2
+2.1.3
 

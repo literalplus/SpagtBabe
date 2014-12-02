@@ -1,7 +1,7 @@
 From e31d820deda7dcbaaba146c41753cd9f3bfc3ce9 Mon Sep 17 00:00:00 2001
 From: xxyy <xxyy98@gmail.com>
 Date: Sat, 4 Jan 2014 22:35:53 +0100
-Subject: [PATCH 01/11] Add pyramid and cookie commands
+Subject: [PATCH 01/12] Add pyramid and cookie commands
 
 Signed-off-by: xxyy <devnull@nowak-at.net>
 ---
@@ -72,5 +72,5 @@ index 0000000..9ef9946
 +        break
 +    message("/ ")
 -- 
-2.1.2
+2.1.3
 

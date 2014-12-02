@@ -1,7 +1,7 @@
 From 90ce7dd3b55fb9c639e675322b98049d4d40ed1e Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Mon, 14 Apr 2014 18:48:59 +0200
-Subject: [PATCH 10/11] Add pong-ability to +ping (aka. ability to check
+Subject: [PATCH 10/12] Add pong-ability to +ping (aka. ability to check
  whether the bot is up)
 
 ---
@@ -36,5 +36,5 @@ index 66286df..850556c 100644
  
      # check for a second argument and set the ping count
 -- 
-2.1.2
+2.1.3
 
