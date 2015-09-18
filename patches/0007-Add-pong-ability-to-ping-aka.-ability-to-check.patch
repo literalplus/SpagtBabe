@@ -1,4 +1,4 @@
-From 57c7a9e152d0495a1793ae11818252062ddf66cd Mon Sep 17 00:00:00 2001
+From 849b81f646e866d74c9a2ca5b5d91140c4109d88 Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Fri, 18 Sep 2015 21:25:18 +0200
 Subject: [PATCH 7/8] Add pong-ability to +ping (aka. ability to check  whether

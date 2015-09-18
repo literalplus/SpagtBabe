@@ -1,12 +1,12 @@
-From 9df92227e1be9fce5b91039b7dc647ce426f34a3 Mon Sep 17 00:00:00 2001
+From d0575a97effeabf1f36cec9f0d16be9f18ee459d Mon Sep 17 00:00:00 2001
 From: LaxWasHere <public@LaxWasHere.com>
 Date: Fri, 18 Sep 2015 21:03:21 +0200
 Subject: [PATCH 3/8] Add Yomama jokes (original by @LaxWasHere)
 
 ---
  data/ymm.txt       | 342 +++++++++++++++++++++++++++++++++++++++++++++++++++++
- plugins/attacks.py |  17 +++
- 2 files changed, 359 insertions(+)
+ plugins/attacks.py |  19 ++-
+ 2 files changed, 360 insertions(+), 1 deletion(-)
  create mode 100644 data/ymm.txt
 
 diff --git a/data/ymm.txt b/data/ymm.txt
@@ -359,9 +359,18 @@ index 0000000..c4250c1
 +{user}, The guys like to shop at Yo mama's favorite store, the gap. gap
 \ No newline at end of file
 diff --git a/plugins/attacks.py b/plugins/attacks.py
-index ab88834..a2e6223 100644
+index ab88834..e249d24 100644
 --- a/plugins/attacks.py
 +++ b/plugins/attacks.py
+@@ -32,7 +32,7 @@ def load_attacks(bot):
+     """
+     :type bot: cloudbot.bot.CloudBot
+     """
+-    global larts, flirts, kills, slaps
++    global larts, flirts, kills, slaps, yomamas
+ 
+     with codecs.open(os.path.join(bot.data_dir, "larts.txt"), encoding="utf-8") as f:
+         larts = [line.strip() for line in f.readlines() if not line.startswith("//")]
 @@ -40,6 +40,9 @@ def load_attacks(bot):
      with codecs.open(os.path.join(bot.data_dir, "flirts.txt"), encoding="utf-8") as f:
          flirts = [line.strip() for line in f.readlines() if not line.startswith("//")]
