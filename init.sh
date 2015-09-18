@@ -20,7 +20,7 @@ git reset --hard origin/master
 echo "=======================Patching"
 
 echo "Applying patches!"
-git am --abort
+git am --abort >/dev/null 2>&1
 git am -3 ../patches/*.patch
 
 if [ "$?" != "0" ]; then
