@@ -30,12 +30,12 @@ else
 fi
 
 if [ -f config ]; then
-	mv -f config config.bkp
+	mv -f config.json config.json.bkp
 	echo "Made backup of persisting config to config.bkp!"
 fi
 
 if [ -f CloudBot/config ]; then
-	cp -f CloudBot/config config
+	cp -f CloudBot/config.json config.json
 	echo "Made backup of CloudBot/config to config (aka. persisting config)"
 fi
 
