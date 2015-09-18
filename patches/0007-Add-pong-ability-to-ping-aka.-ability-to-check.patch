@@ -1,0 +1,37 @@
+From a5c869b9513f393beb7e94e1057c9fd36cb1df98 Mon Sep 17 00:00:00 2001
+From: xxyy <devnull@nowak-at.net>
+Date: Fri, 18 Sep 2015 21:25:18 +0200
+Subject: [PATCH 7/8] Add pong-ability to +ping (aka. ability to check  whether
+ the bot is up)
+
+---
+ plugins/ping.py | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/plugins/ping.py b/plugins/ping.py
+index e34f870..3cb048e 100644
+--- a/plugins/ping.py
++++ b/plugins/ping.py
+@@ -23,13 +23,17 @@ unix_ping_regex = re.compile(r"(\d+.\d+)/(\d+.\d+)/(\d+.\d+)/(\d+.\d+)")
+ win_ping_regex = re.compile(r"Minimum = (\d+)ms, Maximum = (\d+)ms, Average = (\d+)ms")
+ 
+ 
+-@hook.command()
+-def ping(text, reply):
++@hook.command(autohelp=False)
++def ping(text, reply, action, nick):
+     """<host> [count] - pings <host> [count] times"""
+ 
+     args = text.split(' ')
+     host = args[0]
+ 
++    if host == "" or host == "-":
++        action("throws a big ping-pong ball at {}'s head.".format(nick))
++        return
++
+     # check for a second argument and set the ping count
+     if len(args) > 1:
+         count = int(args[1])
+-- 
+2.5.2
+

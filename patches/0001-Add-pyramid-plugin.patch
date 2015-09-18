@@ -1,0 +1,33 @@
+From 3dca15c9fb8bfc682a2e754213697f0c3e909f3c Mon Sep 17 00:00:00 2001
+From: xxyy <devnull@nowak-at.net>
+Date: Fri, 18 Sep 2015 20:55:13 +0200
+Subject: [PATCH 1/8] Add pyramid plugin
+
+---
+ plugins/pyramid.py | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+ create mode 100644 plugins/pyramid.py
+
+diff --git a/plugins/pyramid.py b/plugins/pyramid.py
+new file mode 100644
+index 0000000..2d3c93b
+--- /dev/null
++++ b/plugins/pyramid.py
+@@ -0,0 +1,14 @@
++from cloudbot import hook
++
++@hook.command(permissions=["botcontrol"])
++def pyramid(inp, message=None):
++    """pyramid <text> - Am pyramid le text"""
++
++    while len(inp) > 0:
++        message(inp)
++        if len(inp) != 1:
++            inp = inp[:-1]
++            while inp[-1] == " ":
++                inp = inp[:-1] #remove whitespace to avoid seemingly duplicate lines
++        message("/ ")
++
+-- 
+2.5.2
+

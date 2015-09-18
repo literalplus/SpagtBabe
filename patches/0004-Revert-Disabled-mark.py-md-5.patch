@@ -1,28 +1,25 @@
-From 2fc5833d9f2e5705c1616385da88412b217a71b7 Mon Sep 17 00:00:00 2001
-From: xxyy <xxyy98@gmail.com>
-Date: Fri, 14 Feb 2014 23:50:08 +0100
-Subject: [PATCH 04/12] Revert "Disabled mark.py @md-5"
+From 04457f3d5504796268a4c04b510a70a9286b8bad Mon Sep 17 00:00:00 2001
+From: xxyy <devnull@nowak-at.net>
+Date: Fri, 18 Sep 2015 21:13:45 +0200
+Subject: [PATCH 4/8] Revert "Disabled mark.py @md-5"
 
 This reverts commit 398b34fad5858ba3ed6db12200f20ef6629b4904.
 
-LONG LIVE MARK HARMON
-
-Signed-off-by: xxyy <devnull@nowak-at.net>
+Long Live Mark Harmon
 ---
- plugins/mark.py | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
+ plugins/mark.py | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
  create mode 100644 plugins/mark.py
 
 diff --git a/plugins/mark.py b/plugins/mark.py
 new file mode 100644
-index 0000000..9012dcc
+index 0000000..45f2d10
 --- /dev/null
 +++ b/plugins/mark.py
-@@ -0,0 +1,25 @@
+@@ -0,0 +1,24 @@
 +import random
-+from util import hook, text
++from cloudbot import hook
 +
-+@hook.command('harmon', autohelp=False)
 +@hook.command(autohelp=False)
 +def mark(inp):
 +    """mark -- Spreads the glory of Mark Harmon"""
@@ -45,5 +42,5 @@ index 0000000..9012dcc
 +
 +    return random.choice(responses)
 -- 
-2.1.3
+2.5.2
 

@@ -1,55 +1,49 @@
-From 8c5e94a822e403d575a0e602f06729ff41aebd61 Mon Sep 17 00:00:00 2001
+From efbddc0e624414e02ca0b822683f507af77a9fbb Mon Sep 17 00:00:00 2001
 From: LaxWasHere <public@LaxWasHere.com>
-Date: Sun, 2 Feb 2014 02:15:27 +0100
-Subject: [PATCH 03/12] Add Yomama jokes (original patch by @LaxWasHere)
+Date: Fri, 18 Sep 2015 21:03:21 +0200
+Subject: [PATCH 3/8] Add Yomama jokes (original by @LaxWasHere)
 
-Signed-off-by: xxyy <xxyy98@gmail.com>
-Signed-off-by: xxyy <devnull@nowak-at.net>
 ---
- plugins/attacks.py   |  22 +++-
+ plugins/attacks.py   |  17 +++
  plugins/data/ymm.txt | 342 +++++++++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 363 insertions(+), 1 deletion(-)
+ 2 files changed, 359 insertions(+)
  create mode 100644 plugins/data/ymm.txt
 
 diff --git a/plugins/attacks.py b/plugins/attacks.py
-index feb00b8..879318a 100644
+index ab88834..a2e6223 100644
 --- a/plugins/attacks.py
 +++ b/plugins/attacks.py
-@@ -14,8 +14,12 @@ with open("plugins/data/insults.txt") as f:
- with open("plugins/data/flirts.txt") as f:
-     flirts = [line.strip() for line in f.readlines()
-               if not line.startswith("//")]
-+			  
-+with open("plugins/data/ymm.txt") as f:
-+    ymm = [line.strip() for line in f.readlines()
-+             if not line.startswith("//")]
+@@ -40,6 +40,9 @@ def load_attacks(bot):
+     with codecs.open(os.path.join(bot.data_dir, "flirts.txt"), encoding="utf-8") as f:
+         flirts = [line.strip() for line in f.readlines() if not line.startswith("//")]
  
--
-+			 
- @hook.command
- def lart(inp, action=None, nick=None, conn=None, notice=None):
-     """lart <user> -- LARTs <user>."""
-@@ -70,3 +74,19 @@ def flirt(inp, action=None, conn=None, notice=None):
- 
-     out = 'flirts with {}... "{}"'.format(target, random.choice(flirts))
-     action(out)
++    with codecs.open(os.path.join(bot.data_dir, "ymm.txt"), encoding="utf-8") as f:
++        yomamas = [line.strip() for line in f.readlines() if not line.startswith("//")]
 +
+     with codecs.open(os.path.join(bot.data_dir, "kills.json"), encoding="utf-8") as f:
+         kills = json.load(f)
+ 
+@@ -81,6 +84,20 @@ def flirt(text, conn, nick, message):
+ 
+     message('{}, {}'.format(target, random.choice(flirts)))
+ 
++@asyncio.coroutine
 +@hook.command('ym')
-+@hook.command('ymm')    
-+@hook.command
-+def yomama(inp, reply=None, me=None, nick=None, conn=None):
-+    "yomama <user> -- Insult <user> with a yomama joke."
-+    target = inp.strip()
++def yomama(text, conn, nick, message):
++    """<user> - insults <user> with a yomama joke"""
++    target = text.strip()
 +
-+    if target.lower() == conn.nick.lower():
++    if not is_valid(target):
++        return "I can't attack that."
++
++    if is_self(conn, target):
++        # user is trying to make the bot attack itself!
 +        target = nick
 +
-+    values = {"user": target}
-+    phrase = random.choice(ymm)
-+
-+    # act out the message
-+    reply(phrase.format(**values))
-\ No newline at end of file
++    message('{}, {}'.format(target, random.choice(yomamas)))
+ 
+ @asyncio.coroutine
+ @hook.command
 diff --git a/plugins/data/ymm.txt b/plugins/data/ymm.txt
 new file mode 100644
 index 0000000..c4250c1
@@ -400,5 +394,5 @@ index 0000000..c4250c1
 +{user}, The guys like to shop at Yo mama's favorite store, the gap. gap
 \ No newline at end of file
 -- 
-2.1.3
+2.5.2
 

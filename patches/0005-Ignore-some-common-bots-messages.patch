@@ -1,0 +1,27 @@
+From e136659aba2e8f57c35e8a53e3a346f09cc7112e Mon Sep 17 00:00:00 2001
+From: xxyy <devnull@nowak-at.net>
+Date: Fri, 18 Sep 2015 21:19:35 +0200
+Subject: [PATCH 5/8] Ignore some common bots' messages
+
+---
+ cloudbot/clients/irc.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/cloudbot/clients/irc.py b/cloudbot/clients/irc.py
+index f786f1d..bd60fe0 100644
+--- a/cloudbot/clients/irc.py
++++ b/cloudbot/clients/irc.py
+@@ -343,6 +343,10 @@ class _IrcProtocol(asyncio.Protocol):
+             if command == "PING":
+                 asyncio.async(self.send("PONG " + command_params[-1]), loop=self.loop)
+ 
++            # Ignore some bots
++            if nick in {"Eliralin", "FoxBot", "S", "B", "CafeBabe"}:
++                return
++
+             # Parse the command and params
+ 
+             # Content
+-- 
+2.5.2
+

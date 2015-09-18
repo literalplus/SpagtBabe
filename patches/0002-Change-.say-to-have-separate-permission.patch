@@ -1,0 +1,25 @@
+From f2a3f2e829b3e131193c1bbe1e45e06785c00354 Mon Sep 17 00:00:00 2001
+From: xxyy <devnull@nowak-at.net>
+Date: Fri, 18 Sep 2015 20:56:13 +0200
+Subject: [PATCH 2/8] Change .say to have separate permission
+
+---
+ plugins/admin_bot.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/admin_bot.py b/plugins/admin_bot.py
+index 29ade2b..a608f3d 100644
+--- a/plugins/admin_bot.py
++++ b/plugins/admin_bot.py
+@@ -304,7 +304,7 @@ def raw(text, conn, notice):
+ 
+ 
+ @asyncio.coroutine
+-@hook.command(permissions=["botcontrol"])
++@hook.command(permissions=["say"])
+ def say(text, conn, chan):
+     """[#channel] <message> - says <message> to [#channel], or to the caller's channel if no channel is specified
+     :type text: str
+-- 
+2.5.2
+

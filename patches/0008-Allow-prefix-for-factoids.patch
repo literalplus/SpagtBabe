@@ -1,0 +1,25 @@
+From c551777fdc33a3b88b51a28a802a7015f8109430 Mon Sep 17 00:00:00 2001
+From: xxyy <devnull@nowak-at.net>
+Date: Fri, 18 Sep 2015 21:28:41 +0200
+Subject: [PATCH 8/8] Allow + prefix for factoids
+
+---
+ plugins/factoids.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/factoids.py b/plugins/factoids.py
+index 662645d..9a1da0a 100644
+--- a/plugins/factoids.py
++++ b/plugins/factoids.py
+@@ -129,7 +129,7 @@ def info(text, notice):
+         notice("Unknown Factoid.")
+ 
+ 
+-factoid_re = re.compile(r'^{} ?(.+)'.format(re.escape(FACTOID_CHAR)), re.I)
++factoid_re = re.compile(r'^[{}\+] ?(.+)'.format(re.escape(FACTOID_CHAR)), re.I)
+ 
+ 
+ @asyncio.coroutine
+-- 
+2.5.2
+
