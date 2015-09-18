@@ -1,4 +1,4 @@
-From d0575a97effeabf1f36cec9f0d16be9f18ee459d Mon Sep 17 00:00:00 2001
+From c55a2cd11e979d5daa61627e0940e2896f536953 Mon Sep 17 00:00:00 2001
 From: LaxWasHere <public@LaxWasHere.com>
 Date: Fri, 18 Sep 2015 21:03:21 +0200
 Subject: [PATCH 3/8] Add Yomama jokes (original by @LaxWasHere)
@@ -359,7 +359,7 @@ index 0000000..c4250c1
 +{user}, The guys like to shop at Yo mama's favorite store, the gap. gap
 \ No newline at end of file
 diff --git a/plugins/attacks.py b/plugins/attacks.py
-index ab88834..e249d24 100644
+index ab88834..cab2f9b 100644
 --- a/plugins/attacks.py
 +++ b/plugins/attacks.py
 @@ -32,7 +32,7 @@ def load_attacks(bot):
@@ -398,7 +398,7 @@ index ab88834..e249d24 100644
 +        # user is trying to make the bot attack itself!
 +        target = nick
 +
-+    message('{}, {}'.format(target, random.choice(yomamas)))
++    message(random.choice(yomamas).replace("{user}", target))
  
  @asyncio.coroutine
  @hook.command

@@ -1,4 +1,4 @@
-From 8b84fa460a87a9f0ae5f2ec7edbe053ed9b97cb9 Mon Sep 17 00:00:00 2001
+From 0fb95362577bc969dfa6d3d20259ba3b1333ad32 Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Fri, 18 Sep 2015 21:28:41 +0200
 Subject: [PATCH 8/8] Allow + prefix for factoids
