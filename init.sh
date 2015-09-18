@@ -8,17 +8,19 @@ fi
 
 echo "========================Cloning"
 
-git submodule add -f -- https://github.com/ClouDev/CloudBot.git
-if [ -d CloudBot/ ]; then
-    cd CloudBot
-else
-    echo "Could not cd to CloudBot/ directory! This means that cloning failed in most cases. Exiting!"
-    exit 1
+if [ ! -d CloudBot/ ]; then
+    git clone https://github.com/CloudBotIRC/CloudBot.git
 fi
+cd CloudBot/
+
+git checkout master >/dev/null 2>&1
+git fetch origin >/dev/null 2>&1
+git reset --hard origin/master
 
 echo "=======================Patching"
 
 echo "Applying patches!"
+git am --abort
 git am -3 ../patches/*.patch
 
 if [ "$?" != "0" ]; then

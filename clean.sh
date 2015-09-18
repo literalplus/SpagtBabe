@@ -5,7 +5,7 @@ fi
 
 echo "This is going to remove your current CloudBot working copy! (But backup the persist folder)"
 # Taken from http://stackoverflow.com/a/1885534/1117552
-read -p "Are you sure that you want to update CloudBot with your SpagtBabe patches? " -n 1 -r
+read -p "Are you sure that you want to update CloudBot with your SpagtBabe patches? [y/N]" -n 1 -r
 echo    # move to a new line
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then
@@ -39,8 +39,8 @@ if [ -f CloudBot/config ]; then
 	echo "Made backup of CloudBot/config to config (aka. persisting config)"
 fi
 
-echo "Now removing CloudBot working copy..."
-rm -rf CloudBot
-echo "Removed old CloudBot working copy!"
+#echo "Now removing CloudBot working copy..."
+#git rm -rf CloudBot
+#echo "Removed old CloudBot working copy!"
 
 echo "Done cleaning!"
