@@ -1,4 +1,4 @@
-From f2a3f2e829b3e131193c1bbe1e45e06785c00354 Mon Sep 17 00:00:00 2001
+From b25344b8d502020b5951e980038ac2292f491dcb Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Fri, 18 Sep 2015 20:56:13 +0200
 Subject: [PATCH 2/8] Change .say to have separate permission

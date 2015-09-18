@@ -1,4 +1,4 @@
-From 04457f3d5504796268a4c04b510a70a9286b8bad Mon Sep 17 00:00:00 2001
+From 6afb871c977cff4312de6b0a8e65a8347acae4b7 Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Fri, 18 Sep 2015 21:13:45 +0200
 Subject: [PATCH 4/8] Revert "Disabled mark.py @md-5"
@@ -13,7 +13,7 @@ Long Live Mark Harmon
 
 diff --git a/plugins/mark.py b/plugins/mark.py
 new file mode 100644
-index 0000000..45f2d10
+index 0000000..cda362e
 --- /dev/null
 +++ b/plugins/mark.py
 @@ -0,0 +1,24 @@
@@ -21,7 +21,7 @@ index 0000000..45f2d10
 +from cloudbot import hook
 +
 +@hook.command(autohelp=False)
-+def mark(inp):
++def mark(text):
 +    """mark -- Spreads the glory of Mark Harmon"""
 +    responses = [
 +    "Praise our lord Mark Harmon",

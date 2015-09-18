@@ -1,4 +1,4 @@
-From e136659aba2e8f57c35e8a53e3a346f09cc7112e Mon Sep 17 00:00:00 2001
+From fc3828cac5a5c6f0f38548a9b3e1b4cbacf8c593 Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Fri, 18 Sep 2015 21:19:35 +0200
 Subject: [PATCH 5/8] Ignore some common bots' messages

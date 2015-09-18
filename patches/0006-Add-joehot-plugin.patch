@@ -1,4 +1,4 @@
-From c42ef1a2cc4fc61d8717524363bf47dcd6ce7aa3 Mon Sep 17 00:00:00 2001
+From 109d437453b6e0ba24b0de4812f0d3aab961eee8 Mon Sep 17 00:00:00 2001
 From: xxyy <devnull@nowak-at.net>
 Date: Wed, 12 Mar 2014 23:02:55 +0100
 Subject: [PATCH 6/8] Add joehot plugin
@@ -11,7 +11,7 @@ Signed-off-by: xxyy <devnull@nowak-at.net>
 
 diff --git a/plugins/joehot.py b/plugins/joehot.py
 new file mode 100644
-index 0000000..1f3ddfb
+index 0000000..4ebab15
 --- /dev/null
 +++ b/plugins/joehot.py
 @@ -0,0 +1,72 @@
@@ -26,32 +26,32 @@ index 0000000..1f3ddfb
 +joehots = []
 +
 +@hook.command(autohelp=False)
-+def joehot(inp, notice=None):
++def joehot(text, notice=None):
 +    """joehot [command] - joehot quote service.
 +    Available commands: reload, count, source, purpose, plugin, [quote id].
 +    Pass no arguments for a random quote."""
 +
 +
-+    if "reload" in inp:
++    if "reload" in text:
 +        notice("Reloading quotes!")
 +        suc = refetch_quotes()
 +        notice("Successfully reloaded quotes!" if suc else "Failed reloading quotes!")
 +        notice(str(len(joehots)) + " quotes loaded.")
 +        return
-+    elif "count" in inp:
++    elif "count" in text:
 +        return str(len(joehots)) + " quotes loaded."
-+    elif "source" in inp:
++    elif "source" in text:
 +        return "See all the quotes at %s. (Spoiler alert!)" % QUOTE_SOURCE
-+    elif "plugin" in inp:
++    elif "plugin" in text:
 +        return "Want these quotes on your Spigot server? Get the official plugin here: https://github.com/Spagt/joehot200-Quote-Generator-Pro"
-+    elif "purpose" in inp:
++    elif "purpose" in text:
 +        return "These quotes are solely intended for information about joehot200. This service is not intended to make fun of him. Any usage for such purpose is abuse."
-+    elif inp.isdigit():
-+        index = int(inp) - 1  # Match line numbers
++    elif text.isdigit():
++        index = int(text) - 1  # Match line numbers
 +        try:
 +            choice = joehots[index]
 +        except IndexError:
-+            return "I'm sorry, but I could not find a quote at this index: " + inp
++            return "I'm sorry, but I could not find a quote at this index: " + text
 +    else:
 +        index = random.randint(0, len(joehots))
 +        try:
