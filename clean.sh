@@ -29,12 +29,12 @@ else
     echo "No persisting data found."
 fi
 
-if [ -f config ]; then
+if [ -f config.json ]; then
 	mv -f config.json config.json.bkp
 	echo "Made backup of persisting config to config.bkp!"
 fi
 
-if [ -f CloudBot/config ]; then
+if [ -f CloudBot/config.json ]; then
 	cp -f CloudBot/config.json config.json
 	echo "Made backup of CloudBot/config to config (aka. persisting config)"
 fi

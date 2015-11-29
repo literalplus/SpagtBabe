@@ -36,7 +36,7 @@ else
     
     cd ../
     
-    if [ -f config ]; then
+    if [ -f config.json ]; then
         echo "Found config.json! Copying."
         cp -f config.json CloudBot/config.json
     else
